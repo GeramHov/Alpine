@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 $blueAlpine: #245e97;
-$lato: 'Lato', sans-serif;
+$lato: "Lato", sans-serif;
+$jost: "Jost", sans-serif;
+$playfair: "Playfair Display", serif;
 
-#navbar{
-    background-color: $blueAlpine;
+#navbar {
+  background-color: $blueAlpine;
 }
 
-#logo{
-    width: 7.5rem;
+#logo {
+  width: 7.5rem;
 }
 
-.vertical-line{
-    height: 16px;
-    width: 1px;
-    background-color: white;
+.vertical-line {
+  height: 16px;
+  width: 1px;
+  background-color: white;
 }
 
-a{
-    font-family: $lato;
-    font-size: 13px;
+a {
+  font-family: $lato;
+  font-size: 13px;
 }

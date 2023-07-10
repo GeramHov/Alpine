@@ -3,17 +3,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  showMenu = false;
-  showSearchBox = false;
+  showMenu: boolean = false;
+  showSearchBox: boolean = false;
 
-  toggleNavbar(){
+  toggleNavbar(): void {
     this.showMenu = !this.showMenu;
   }
 
-  toggleSearchBox(){
+  toggleSearchBox(): void {
     this.showSearchBox = !this.showSearchBox;
   }
 }
