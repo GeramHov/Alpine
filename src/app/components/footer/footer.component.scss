@@ -3,29 +3,43 @@ $lato: "Lato", sans-serif;
 $jost: "Jost", sans-serif;
 $playfair: "Playfair Display", serif;
 
-#footer-logo {
-  width: 7em;
-}
+footer{
+  z-index: 99;
 
-#footer-logo-renault {
-  width: 2.2em;
-}
+  #footer-logo {
+    width: 9.5em;
+    filter: contrast(0.0001);
+    opacity: 0.5;
+    transition: all 0.4s ease;
 
-p {
-  font-family: $jost;
-}
+    &:hover {
+      filter: contrast(1);
+      opacity: 0.8;
+      opacity: 1;
+    }
+  }
+  
+  #footer-logo-renault {
+    width: 2.2em;
+  }
+  
+  p {
+    font-family: $jost;
+  }
+  
+  .vertical-line {
+    margin-top: 8px;
+    height: 28px;
+    width: 1px;
+    background-color: $blueAlpine;
+  }
+  
+  li {
+    font-size: smaller;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
 
-.vertical-line {
-  margin-top: 8px;
-  height: 28px;
-  width: 1px;
-  background-color: $blueAlpine;
-}
-
-li {
-  font-size: smaller;
-}
-
-a:hover {
-  text-decoration: underline;
 }

@@ -3,21 +3,28 @@ $lato: "Lato", sans-serif;
 $jost: "Jost", sans-serif;
 $playfair: "Playfair Display", serif;
 
-#navbar {
+nav{
+  z-index: 100;
   background-color: $blueAlpine;
-}
+  
+  #logo {
+    width: 7.5rem;
+  }
+  
+  .vertical-line {
+    height: 16px;
+    width: 1px;
+    background-color: white;
+  }
+  
+  a {
+    font-family: $lato;
+    font-size: 13px;
+  }
 
-#logo {
-  width: 7.5rem;
-}
-
-.vertical-line {
-  height: 16px;
-  width: 1px;
-  background-color: white;
-}
-
-a {
-  font-family: $lato;
-  font-size: 13px;
+  #fr{
+    height: 3.5px;
+    width: 80%;
+    filter: brightness(0.9);
+  }
 }

@@ -1,0 +1,105 @@
+<section id="car-body" class="py-14 bg-slate-50">
+    <div class="container w-100 text-center pt-5 pb-10 mb-5">
+        <h1 class="text-3xl font-bold text-gray-600">Structure</h1>
+    </div>
+    <div class="container flex justify-center w-100 px-36">
+
+       <div class="w-1/2 flex flex-col items-center justify-center">
+        <img 
+        *ngIf="!bodyImage"
+        src="../../../assets/images/homepage/conception/alpine-bone.jpg" alt="bone">
+        <img 
+        *ngIf="bodyImage"
+        src="../../../assets/images/homepage/conception/alpine-skin.jpg" alt="bone">
+       </div>
+
+       <div class="w-1/2 flex flex-col items-start justify-center">
+        <div class="py-3 px-2">
+            <div class="flex justify-end">
+              <h1 class="text-5xl mb-8 text-playfair text-end">A Quest to go lighter</h1>
+            </div>
+            <div class="flex justify-end">
+                <p class="text-playfair text-end ps-20">With just 1,102 kg on the scales, A110’s power-weight ratio is quite simply remarkable. No stone has been left unturned on the quest for lightness, from the choice of materials to the accessories, seats and wheel rims
+                </p>
+            </div>
+          </div>
+       </div>
+    </div>
+</section>   
+
+<section id="car-body" class="py-5">
+
+    <div class="container w-100 text-center pb-10 mb-5 mt-24">
+        <h1 class="text-3xl font-bold text-gray-600">Mechanic</h1>
+    </div>
+    <div class="container flex justify-center w-100 px-36">
+
+        <div class="w-1/2 flex flex-col items-start justify-center">
+            <div class="py-3 px-2">
+                <div class="flex justify-start">
+                  <h1 class="text-4xl mb-8 text-playfair">Performance in Your hands</h1>
+                </div>
+                <div class="flex flex-col justify-start">
+                    <p class="text-playfair text-3xl text-start pe-20">155 mph</p>
+                    <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">Maximum speed on track 
+                        <span 
+                        *ngIf="!speed"
+                        (click)="toggleSpeed()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-down"></i></span>
+                        <span 
+                        *ngIf="speed"
+                        (click)="toggleSpeed()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-up"></i></span> </p>
+                    <p 
+                    *ngIf="speed"
+                    class="text-playfair font-extralight text-start pe-20 pb-2">The 252 hp, direct injection 1.8 litre engine is designed to offer an immediate thrill backed by high performance</p>
+                    <div class="w-100 pb-5">
+                        <hr>
+                    </div>
+                    <p class="text-playfair text-3xl text-start pe-20">4.5 s</p>
+                    <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">0 to 62 mph <span 
+                        *ngIf="!speedTime"
+                        (click)="toggleSpeedTime()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-down"></i></span>
+                        <span 
+                        *ngIf="speedTime"
+                        (click)="toggleSpeedTime()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-up"></i></span></p>
+                    <p 
+                    *ngIf="speedTime"
+                    class="text-playfair font-extralight text-start pe-20 pb-2">The A110 delivers maximum torque of 320 Nm from 2,000 to 4,800 rpm</p>
+                    <div class="w-100 pb-5">
+                        <hr>
+                    </div>
+                    <p class="text-playfair text-3xl text-start pe-20">260 ms</p>
+                    <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">Gear change time 
+                        <span 
+                        *ngIf="!gearChangeTime"
+                        (click)="toggleGearChangeTime()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-down"></i></span>
+                        <span 
+                        *ngIf="gearChangeTime"
+                        (click)="toggleGearChangeTime()"
+                        class="cursor-pointer mx-1"><i class="fa-solid fa-caret-up"></i></span>
+                    </p>
+                    <p 
+                    *ngIf="gearChangeTime"
+                    class="text-playfair font-extralight text-start pe-20 pb-2">The A110’s transmission is provided by a 7-speed dual clutch gearbox with paddle shifters on the steering wheel</p>
+                    <div class="w-100 pb-5">
+                        <hr>
+                    </div>
+                </div>
+              </div>
+           </div>
+
+       <div class="w-1/2 flex flex-col items-center justify-center">
+        <video class="bg-video__content" autoplay muted loop>
+            <source src="../../../assets/images/homepage/motorisation/MOTEUR_CINEMAGRAPH-.mov"
+              type="video/mp4">
+          </video>
+       </div>
+
+      
+    </div>
+  
+  </section>

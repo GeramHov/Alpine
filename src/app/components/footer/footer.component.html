@@ -14,53 +14,33 @@
         </span>
       </div>
       <div>
-        <span
-          class="block text-sm text-gray-500 sm:text-center dark:text-gray-400 text-center sm:py-4"
-          >© 2023.
-          All Rights Reserved</span
-        >
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400 text-center sm:py-4">© 2023.
+          All Rights Reserved</span>
       </div>
-      <ul
-        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
-      >
+      <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
         <li>
           <a href="#" class="mr-4 hover:underline md:mr-6">Site Map</a>
         </li>
         <li>
-          <a href="#" class="mr-4 hover:underline md:mr-6"
-            >Privacy & Legal Notices</a
-          >
+          <a href="#" class="mr-4 hover:underline md:mr-6">Privacy & Legal Notices</a>
         </li>
         <li>
           <a href="#" class="mr-4 hover:underline md:mr-6">Accessibility</a>
         </li>
 
-        <li 
-        *ngIf="!disclaimer"
-        (click)=toggleDisclaimer()
-        >
-          <a href="#" class="font-extrabold hover:underline">View Disclaimer</a>
-          <span  class="ps-1" style="cursor: pointer"
-            >&#x25BC;</span
-          >
+        <li *ngIf="!disclaimer" (click)=toggleDisclaimer()>
+          <button href="#" class="font-extrabold hover:underline">View Disclaimer</button>
+          <span class="ps-1" style="cursor: pointer">&#x25BC;</span>
         </li>
 
-        <li 
-        *ngIf="disclaimer"
-        (click)=toggleDisclaimer()
-        >
-          <a href="#" class="font-extrabold hover:underline">Close Disclaimer</a>
-          <span  class="ps-1" style="cursor: pointer"
-            >&#x25B2;</span
-          >
+        <li *ngIf="disclaimer" (click)=toggleDisclaimer()>
+          <button clbuttonss="font-extrabold hover:underline">Close Disclaimer</button>
+          <span class="ps-1" style="cursor: pointer">&#x25B2;</span>
         </li>
       </ul>
     </div>
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
-    <p 
-    *ngIf="disclaimer" 
-    class="font-light"
-    >
+    <p *ngIf="disclaimer" class="font-light">
       *Starting price is MSRP, or Manufacturer’s Suggested Retail Price. MSRP
       excludes transportation and handling charges, destination charges, taxes,
       title, registration, license, tag, preparation and documentary service
