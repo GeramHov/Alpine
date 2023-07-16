@@ -1,0 +1,203 @@
+<div id="total-card" class="fixed bottom-0 left-0 flex flex-col w-48 h-48 bg-[#245e97] text-white text-lato">
+    <p class="mx-2 font-light">
+        Personalized Price
+    </p>
+    <hr>
+    <ul>
+        <li class="ps-1">Base: <span class="ps-20">{{ configuratorData.cars[1].price |
+                currency:'USD':'symbol':'1.0-2'}}</span>
+        </li>
+        <li class="ps-1">
+            Color: <span></span>
+        </li>
+        <li class="ps-1">
+            Interior: <span></span>
+        </li>
+        <li class="ps-1">
+            Rims: <span></span>
+        </li>
+        <li class="ps-1">
+            Equipments: <span></span>
+        </li>
+        <li class="ps-1">
+            Accessories: <span></span>
+        </li>
+    </ul>
+    <hr>
+    <p class="mx-1 font-light">
+        Total Price
+    </p>
+</div>
+
+<div class="container text-start">
+    <div class="mx-10 my-6 px-2 hover:underline cursor-pointer" routerLink="/choose-to-build">
+        <i class="fa-solid fa-chevron-left px-1"></i>Back
+    </div>
+</div>
+
+<div class="w-100 text-center pt-5 my-10">
+    <h1 class="text-3xl font-semibold text-gray-600 text-jost">Alpine A110 Pure Model Configurator</h1>
+    <h1 class="text-2xl font-semibold text-gray-600 text-jost py-1">Starting at: <span
+            class="text-gray-800 font-bold">{{ configuratorData.cars[1].price | currency:'USD':'symbol':'1.0-2'}}</span>
+    </h1>
+</div>
+
+<section id="resume" class=" w-5/6 m-auto mt-28 grid grid-col-1 gap-x-3 gap-y-10 md:grid-cols-2 max-w-6xl items-center">
+    <div class="py-3 px-2">
+        <div class="flex mt-2">
+            <h1 class="text-3xl mb-2 text-playfair">Engine</h1>
+        </div>
+        <p class="text-playfair text-xl">
+            1.8 L Inline 4 Cylinder Turbo
+        </p>
+        <div class="flex items-center">
+            <button disabled class="bg-gray-400 text-white font-medium py-1 px-2 my-4 me-4">
+                Choosen
+            </button>
+            <i class="fa-solid fa-check text-green-600"></i>
+        </div>
+        <hr>
+
+        <div class="flex mt-4">
+            <h1 class="text-3xl mb-2 text-playfair">Transmission</h1>
+        </div>
+        <p class="text-playfair text-xl">
+            7 Speed Double-Clutch Transmission
+        </p>
+        <div class="flex items-center my-4">
+            <button disabled class="bg-gray-400 text-white font-medium py-1 px-2 my-4 me-4">
+                Choosen
+            </button>
+            <i class="fa-solid fa-check text-green-600"></i>
+        </div>
+    </div>
+
+    <div class="py-3 px-6">
+        <img src="../../../assets/images/homepage/versions/ALPINE-PURE-1.png">
+    </div>
+</section>
+
+<div class="container w-100 mx-auto text-center pb-48 pt-24">
+    <button (click)="loadExteriorSection()" class="text-white font-bold py-2 px-4 w-48"
+        [ngClass]="passToExterior ? 'bg-gray-400' : 'blue'" [attr.disabled]="passToExterior ? true : null">
+        Next <i class="fa-solid fa-chevron-down text-sm"></i>
+    </button>
+</div>
+
+<section id="exterior">
+    <hr>
+    <div class="w-100 text-center pt-10 my-14">
+        <h1 class="text-3xl font-semibold text-gray-600 text-jost">Exterior</h1>
+    </div>
+
+    <div class="container w-11/12 mx-auto flex py-12">
+
+        <div id="car-visual" class="w-2/3 flex flex-col justify-center">
+            <div class="relative">
+                <img [src]="exteriorColorslides[currentIndex]" alt="" width="80%">
+
+                <div class="flex">
+                    <div id="left" (click)="slideLeftExterior()">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                    <div id="round">
+                        <img src="../../../assets/icons/image-360.png" alt="360" width="8%">
+                    </div>
+                    <div id="right" (click)="slideRightExterior()">
+                        <i class="fa-solid fa-angle-left fa-rotate-180"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="w-1/3 flex flex-col items-center justify-start my-16">
+            <div class="text-center py-4">
+                <p class="text-xl font-semibold text-gray-800 text-jost">Colors</p>
+            </div>
+
+            <div class="flex justify-center">
+                <!-- Use *ngFor to loop through the first three colors (colors[1], colors[2], colors[3]) -->
+                <ng-container *ngFor="let index of [1, 2, 3]">
+                    <!-- Access the color object using the numeric index from the colors object -->
+                    <span id="colorchoice"
+                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1"
+                        [class.choosen]="index === clickedColorIndex" (click)="handleColorClick(index)">
+                        <!-- Assuming the images are defined in the colors objects, otherwise use different URLs -->
+                        <img [src]="colors[index].photo" [alt]="colors[index].name">
+                        <p class="text-sm font-normal text-gray-800 text-jost py-2">{{ colors[index].name | titlecase
+                            }}</p>
+                        <p class="text-sm font-normal text-gray-800 text-jost">Cost: {{ colors[index].price |
+                            currency:'USD':'symbol':'1.0-2'
+                            }}</p>
+                    </span>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+    <div class="container w-100 mx-auto text-center py-24">
+        <button class="text-white font-bold py-2 px-4 w-48" [ngClass]="passToInterior ? 'bg-gray-400' : 'blue'"
+            (click)="loadInteriorSection()" [attr.disabled]="passToInterior ? true : null">
+            Next <i class="fa-solid fa-chevron-down text-sm"></i>
+        </button>
+    </div>
+</section>
+
+
+<section id="interior">
+    <hr>
+    <div class="w-100 text-center pt-10 my-14">
+        <h1 class="text-3xl font-semibold text-gray-600 text-jost">Interior</h1>
+    </div>
+
+    <div class="container w-11/12 mx-auto flex py-12">
+
+
+        <div class="w-1/3 flex flex-col items-center justify-start my-16">
+            <div class="text-center py-4">
+                <p class="text-xl font-semibold text-gray-800 text-jost">Colors</p>
+            </div>
+
+            <div class="flex justify-center">
+                <!-- Use *ngFor to loop through the first three colors (colors[1], colors[2], colors[3]) -->
+                <ng-container *ngFor="let index of [1, 2, 3]">
+                    <!-- Access the color object using the numeric index from the colors object -->
+                    <span id="colorchoice"
+                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1"
+                        [class.choosen]="index === clickedColorIndex" (click)="handleColorClick(index)">
+                        <!-- Assuming the images are defined in the colors objects, otherwise use different URLs -->
+                        <img [src]="colors[index].photo" [alt]="colors[index].name">
+                        <p class="text-sm font-normal text-gray-800 text-jost py-2">{{ colors[index].name | titlecase
+                            }}</p>
+                        <p class="text-sm font-normal text-gray-800 text-jost">Cost: {{ colors[index].price |
+                            currency:'USD':'symbol':'1.0-2'
+                            }}</p>
+                    </span>
+                </ng-container>
+            </div>
+
+        </div>
+
+        <div id="car-visual" class="w-2/3 flex flex-col justify-center">
+            <div class="relative flex justify-end">
+                <img [src]="interiorColorslides[currentIndex]" alt="" width="80%">
+                <!-- <img src="../../../assets/images/configurateur/interieurs/vues/cuir-brun-1.jpg" alt="" width="70%"> -->
+
+                <div class="flex">
+                    <div id="left" (click)="slideLeftInterior()">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </div>
+                    <div id="round">
+                        <img src="../../../assets/icons/image-360.png" alt="360" width="8%">
+                    </div>
+                    <div id="right" (click)="slideRightInterior()">
+                        <i class="fa-solid fa-angle-left fa-rotate-180"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

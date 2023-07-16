@@ -1,0 +1,92 @@
+$blueAlpine: #245e97;
+$lato: "Lato", sans-serif;
+$jost: "Jost", sans-serif;
+$playfair: "Playfair Display", serif;
+
+.text-playfair {
+    font-family: $playfair;
+}
+
+.blue {
+    background-color: $blueAlpine;
+
+    &:hover {
+        background-color: #6366f1;
+        transition: 0.2s ease-in;
+    }
+}
+
+.text-lato {
+    font-family: $lato;
+}
+
+.text-jost {
+    font-family: $jost;
+}
+
+#exterior {
+    background-image: url('../../../assets/background/qw15.jpg');
+    background-size: cover;
+    // display: none;
+}
+
+#interior {
+    background-image: url('../../../assets/background/33780883_gpt9.jpg');
+    background-size: cover;
+    // display: none;
+}
+
+.choosen {
+    border: 1px solid black
+}
+
+#total-card {
+    z-index: 2;
+    // display: none;
+}
+
+#left {
+    position: absolute;
+    bottom: 25px;
+    left: 36%;
+    color: black;
+    font-size: 2rem;
+    cursor: pointer;
+    filter: opacity(0.2);
+
+    &:hover {
+        filter: opacity(1);
+        transition: 0.2s ease;
+    }
+
+    &:not(:hover) {
+        transition: 0.2s ease;
+    }
+}
+
+#round {
+    position: absolute;
+    bottom: 25px;
+    left: 40%;
+}
+
+#right {
+
+    position: absolute;
+    right: 52%;
+
+    bottom: 25px;
+    color: black;
+    font-size: 2rem;
+    cursor: pointer;
+    filter: opacity(0.2);
+
+    &:hover {
+        filter: opacity(1);
+        transition: 0.2s ease;
+    }
+
+    &:not(:hover) {
+        transition: 0.2s ease;
+    }
+}

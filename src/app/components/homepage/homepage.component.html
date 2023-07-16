@@ -80,63 +80,146 @@
 </div>
 
 <section id="tools" class="my-5">
-  <div class="container w-100 text-center pt-5 pb-10 mb-5">
-      <h1 class="text-3xl font-bold text-gray-600">Shopping Tools</h1>
+
+  <div class="col-4 w-100 text-center pt-5 pb-10 mb-5">
+    <h1 class="text-3xl font-bold text-gray-600">Shopping Tools</h1>
   </div>
-  <div class="container flex justify-center">
-      <div class="col-8 flex">
 
-          <a href="#">
-              <div id="card-1" class="w-48 h-96 bg-white border mx-4 ">
-                  <div id="link" class="p-5 flex flex-col items-center">
-                      <i class="fa-solid fa-car text-white"></i>
-                      <a href="#"
-                          class="inline-flex items-center px-3 py-2 text-base font-bold text-center text-white">
-                          ALL VEHICLES
-                      </a>
-                  </div>
-              </div>
+  <div class="col-8 flex justify-center items-center flex-wrap">
+    <a href="#">
+      <div id="card-1" class="w-48 h-96 bg-white border mx-4 my-4">
+        <div id="link" class="p-5 flex flex-col items-center">
+          <i class="fa-solid fa-car text-white"></i>
+          <a href="#" class="inline-flex items-center px-3 py-2 text-base font-bold text-center text-white">
+            ALL VEHICLES
           </a>
-
-          <a href="#">
-              <div id="card-2" class="w-48 h-96 bg-white border mx-4 ">
-                  <div class="p-5 flex flex-col items-center">
-                      <i class="fa-solid fa-gears text-white"></i>
-                      <a href="#" class="inline-flex items-center py-2 text-base font-bold text-center text-white">
-                          BUILD YOUR OWN
-                      </a>
-                  </div>
-              </div>
-          </a>
-
-          <a href="#">
-              <div id="card-3" class="w-48 h-96 bg-white border mx-4 ">
-                  <div class="p-5 flex flex-col items-center text-white">
-                      <i class="fa-solid fa-gift"></i>
-
-                      <a href="#"
-                          class="inline-flex items-center px-3 py-2 text-base font-bold text-center text-white">
-                          SPECIAL OFFERS
-                      </a>
-                  </div>
-              </div>
-          </a>
-
-          <a href="#">
-              <div id="card-4" class="w-48 h-96 bg-white border mx-4 ">
-                  <div class="p-5 flex flex-col items-center">
-                      <i class="fa-solid fa-screwdriver-wrench text-white"></i>
-                      <a href="#" class="inline-flex items-center py-2 text-base font-bold text-center text-white">
-                          FIND MY DEALER
-                      </a>
-                  </div>
-              </div>
-          </a>
-
+        </div>
       </div>
+    </a>
+
+    <a href="#">
+      <div id="card-2" class="w-48 h-96 bg-white border mx-4 my-4">
+        <div class="p-5 flex flex-col items-center">
+          <i class="fa-solid fa-gears text-white"></i>
+          <a href="#" class="inline-flex items-center py-2 text-base font-bold text-center text-white">
+            BUILD YOUR OWN
+          </a>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div id="card-3" class="w-48 h-96 bg-white border mx-4 my-4">
+        <div class="p-5 flex flex-col items-center text-white">
+          <i class="fa-solid fa-gift"></i>
+
+          <a href="#" class="inline-flex items-center px-3 py-2 text-base font-bold text-center text-white">
+            SPECIAL OFFERS
+          </a>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div id="card-4" class="w-48 h-96 bg-white border mx-4 my-4">
+        <div class="p-5 flex flex-col items-center">
+          <i class="fa-solid fa-screwdriver-wrench text-white"></i>
+          <a href="#" class="inline-flex items-center py-2 text-base font-bold text-center text-white">
+            FIND MY DEALER
+          </a>
+        </div>
+      </div>
+    </a>
+
   </div>
 
 </section>
+
 <div class="container w-100 my-10">
   <hr>
 </div>
+
+<section id="car-body" class="bg-slate-50 pb-16 mt-4">
+  <div class="w-100 text-center pt-5 pb-10 mb-5">
+    <h1 class="text-3xl font-bold text-gray-600">Structure</h1>
+  </div>
+
+  <div class="w-5/6 m-auto mt-28 grid grid-col-1 gap-x-3 gap-y-10 md:grid-cols-2 max-w-8xl items-center">
+
+
+    <div class="py-3 px-10">
+      <img *ngIf="!bodyImage" src="../../../assets/images/homepage/conception/alpine-bone.jpg" alt="bone">
+      <img *ngIf="bodyImage" src="../../../assets/images/homepage/conception/alpine-skin.jpg" alt="bone">
+    </div>
+    <div class="py-3 px-2">
+
+      <div class="flex justify-center">
+        <h1 class="text-5xl mb-8 text-playfair">A Quest to go lighter</h1>
+      </div>
+
+      <p class="text-playfair">With just 1,102 kg on the scales, A110’s power-weight ratio is quite simply remarkable.
+        No stone has been left unturned on the quest for lightness, from the choice of materials to the accessories,
+        seats, and wheel rims
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="car-engine" class="pb-16 py-8">
+  <div class="w-100 text-center pt-5  mb-5">
+    <h1 class="text-3xl font-bold text-gray-600">Mechanic</h1>
+  </div>
+  <div class="w-5/6 m-auto mt-28 grid grid-col-1 gap-x-3 gap-y-10 md:grid-cols-2 max-w-8xl items-center">
+
+
+
+    <div class="py-3 px-2">
+
+      <div class="flex flex-col justify-start">
+        <h1 class="text-4xl mb-8 text-playfair">Performance in Your hands</h1>
+      </div>
+
+      <p class="text-playfair text-3xl text-start pe-20">155 mph</p>
+      <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">Maximum speed on track
+        <span *ngIf="!speed" (click)="toggleSpeed()" class="cursor-pointer mx-1"><i
+            class="fa-solid fa-caret-down"></i></span>
+        <span *ngIf="speed" (click)="toggleSpeed()" class="cursor-pointer mx-1"><i
+            class="fa-solid fa-caret-up"></i></span>
+      </p>
+      <p *ngIf="speed" class="text-playfair font-extralight text-start pe-20 pb-2">The 252 hp, direct injection 1.8
+        litre engine is designed to offer an immediate thrill backed by high performance</p>
+      <div class="w-100 pb-5">
+        <hr>
+      </div>
+      <p class="text-playfair text-3xl text-start pe-20">4.5 s</p>
+      <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">0 to 62 mph <span *ngIf="!speedTime"
+          (click)="toggleSpeedTime()" class="cursor-pointer mx-1"><i class="fa-solid fa-caret-down"></i></span>
+        <span *ngIf="speedTime" (click)="toggleSpeedTime()" class="cursor-pointer mx-1"><i
+            class="fa-solid fa-caret-up"></i></span>
+      </p>
+      <p *ngIf="speedTime" class="text-playfair font-extralight text-start pe-20 pb-2">The A110 delivers maximum torque
+        of 320 Nm from 2,000 to 4,800 rpm</p>
+      <div class="w-100 pb-5">
+        <hr>
+      </div>
+      <p class="text-playfair text-3xl text-start pe-20">260 ms</p>
+      <p class="text-playfair font-light text-start text-gray-600 pe-20 py-2">Gear change time
+        <span *ngIf="!gearChangeTime" (click)="toggleGearChangeTime()" class="cursor-pointer mx-1"><i
+            class="fa-solid fa-caret-down"></i></span>
+        <span *ngIf="gearChangeTime" (click)="toggleGearChangeTime()" class="cursor-pointer mx-1"><i
+            class="fa-solid fa-caret-up"></i></span>
+      </p>
+      <p *ngIf="gearChangeTime" class="text-playfair font-extralight text-start pe-20 pb-2">The A110’s transmission is
+        provided by a 7-speed dual clutch gearbox with paddle shifters on the steering wheel</p>
+      <div class="w-100 pb-5">
+        <hr>
+      </div>
+    </div>
+
+    <div class="py-3 px-10">
+      <video class="bg-video__content" autoplay muted loop>
+        <source src="../../../assets/images/homepage/motorisation/MOTEUR_CINEMAGRAPH-.mov" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>

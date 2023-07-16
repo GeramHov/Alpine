@@ -1,0 +1,16 @@
+$blueAlpine: #245e97;
+$lato: "Lato", sans-serif;
+$jost: "Jost", sans-serif;
+$playfair: "Playfair Display", serif;
+
+.text-blue {
+    color: $blueAlpine
+}
+
+#totop {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    cursor: pointer;
+    display: none;
+}

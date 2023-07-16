@@ -1,0 +1,108 @@
+<div class="bg-slate-50">
+    <div id="slider" class="w-1/2 mx-auto flex justify-center relative">
+        <img [src]="slides[currentIndex].url" [alt]="slides[currentIndex].title"
+            [ngClass]="{ 'leaving': leave, 'coming': come }">
+    </div>
+</div>
+
+<div class="container mx-auto flex justify-center flex-wrap py-8">
+    <h1 class="text-2xl font-bold text-gray-600">Models</h1>
+</div>
+
+<div id="models" class="container mx-auto flex justify-center flex-wrap py-5">
+    <div id="model-col" class="w-1/5 flex-col items-center justify-center">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">ALPINE A110</h3>
+        <hr>
+        <img src="../../../assets/images/configurateur/modele/selection/pure.png" alt="pure">
+    </div>
+    <div id="model-col" class="w-1/5 flex-col items-center justify-center">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">62.500$ MSRP*</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">4.5sec</p>
+            <p class="text-jost py-1">Acceleration</p>
+            <p class="text-jost py-1">0-60mph</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">250 km/h MAX-SPEED</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">252 hp</p>
+            <p class="text-jost py-1">Power</p>
+            <p class="text-jost py-1">@ 5,800 rpm</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">7-SPEED AT</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">320 lb-ft</p>
+            <p class="text-jost py-1">Torque</p>
+            <p class="text-jost py-1">@ 2000 - 3,200 rpm</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600"><span
+                class="text-jost font-light text-gray-600">Engine:</span>1.8L Inline-4 Turbo</h3>
+        <hr>
+        <div class="flex flex-col items-center py-16">
+            <button routerLink="/build" class="blue text-white font-medium py-2 px-4 me-6 lato">
+                Build
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="models" class="container mx-auto flex justify-center flex-wrap py-5">
+    <div id="model-col" class="w-1/5 flex-col items-center justify-center">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">ALPINE A110 GT</h3>
+        <hr>
+        <img src="../../../assets/images/configurateur/modele/selection/legende.png" alt="legende">
+    </div>
+    <div id="model-col" class="w-1/5 flex-col items-center justify-center">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">72.500$ MSRP*</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">4.2sec</p>
+            <p class="text-jost py-1">Acceleration</p>
+            <p class="text-jost py-1">0-60mph</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">250 km/h MAX-SPEED</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">300 hp</p>
+            <p class="text-jost py-1">Power</p>
+            <p class="text-jost py-1">@ 5,800 rpm</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600">7-SPEED AT</h3>
+        <hr>
+        <div class="flex flex-col items-center py-10">
+            <p class="text-jost py-1">340 lb-ft</p>
+            <p class="text-jost py-1">Torque</p>
+            <p class="text-jost py-1">@ 2000 - 3,200 rpm</p>
+        </div>
+    </div>
+    <div id="model-col" class="w-1/5">
+        <h3 class="text-jost flex justify-center font-medium text-gray-600"><span
+                class="text-jost font-light text-gray-600">Engine:</span> 1.8L Inline-4 Turbo</h3>
+        <hr>
+        <div class="flex flex-col items-center py-16">
+            <button routerLink="/build" class="blue text-white font-medium py-2 px-4 me-6 lato">
+                Build
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDERS -->
+<!-- <div id="left" (click)="slideLeft()">
+    <i class="fa-solid fa-angle-left"></i>
+</div>
+<div id="right" (click)="slideRight()">
+    <i class="fa-solid fa-angle-left fa-rotate-180"></i>
+</div> -->
