@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SlideInterface } from 'src/app/types/image.type';
 import { Store } from '@ngrx/store';
-import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer'; // Import the selector
+import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer';
+import ICar from 'src/app/model/car.model';
+import { selectCar } from 'src/app/action/configurator.action';
+import { Router } from '@angular/router';
+import { IData } from 'src/app/data/alpine';
 
 @Component({
   selector: 'app-prebuild',
@@ -9,7 +13,8 @@ import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer'; // Impo
   styleUrls: ['./prebuild.component.scss'],
 })
 export class PrebuildComponent implements OnInit {
-  configuratorData: any;
+  configuratorData!: IData;
+  carsArray: any[] = [];
   slides: SlideInterface[] = [
     {
       url: '../../../assets/images/homepage/galerie/A110_LEGENDE_1.jpg',
@@ -54,7 +59,7 @@ export class PrebuildComponent implements OnInit {
 
   currentIndex: number = 0;
 
-  constructor(private store: Store<{ configurator: any }>) {}
+  constructor(private store: Store<{ configurator: any }>, private router : Router) { }
 
   ngOnInit(): void {
     this.store.select(selectConfiguratorData).subscribe((data) => {
@@ -62,22 +67,23 @@ export class PrebuildComponent implements OnInit {
       console.log('Configurator Data:', this.configuratorData);
     });
 
-    if (!this.clicked) {
-      setInterval(() => {
-        this.slideRight();
-      }, 3000);
-    } else return;
-  }
+    // DEFINITION OF ARRAY
 
-  // slideLeft(): void {
-  //   this.clicked = true;
-  //   this.leave = true;
-  //   setTimeout(() => {
-  //     this.currentIndex =
-  //       (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-  //     this.leave = false;
-  //   }, 200);
-  // }
+    // CALL THE SLIDE SHOW
+    setInterval(() => {
+      console.log('slide');
+      
+      this.slideRight();
+    }, 3000);
+
+  }
+  // CONSTRUCT ARRAY OF TWO OBJECTS OF CARS
+  
+  selectVersion(car: ICar) {
+    this.store.dispatch(selectCar({ car }))
+    this.router.navigate(["build"])
+  }
+  
 
   slideRight(): void {
     this.clicked = true;
@@ -87,4 +93,12 @@ export class PrebuildComponent implements OnInit {
       this.come = false;
     }, 200);
   }
+
+  slideToSelect(): void {
+    const selectSection = document.getElementById('select');
+    if (selectSection) {
+      selectSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
+

@@ -1,9 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer'; // Import the selector
-import { ICar, IInterior, IPhotos } from 'src/app/types/cars';
-import { IColors } from 'src/app/types/colors';
-import { IPerso } from 'src/app/types/personalized';
+import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer';
+import { ActivatedRoute } from '@angular/router';
+import ICar from 'src/app/model/car.model';
+import { afterSelection, selectColor } from 'src/app/action/configurator.action';
+import { IData } from 'src/app/data/alpine';
+import IColor from 'src/app/model/color.model';
 
 @Component({
   selector: 'app-build',
@@ -11,47 +13,62 @@ import { IPerso } from 'src/app/types/personalized';
   styleUrls: ['./build.component.scss'],
 })
 export class BuildComponent implements OnInit {
-  configuratorData: any;
+  configuratorData!: IData;
+  car!: ICar;
   currentIndex: number = 0;
+  
+  selectedColor: IColor | null = null;
+  totalCard: boolean = false;
   passToExterior: boolean = false;
   passToInterior: boolean = false;
-  colors!: IColors;
-  clickedColorIndex: number | null = null;
-  car: ICar[] = [];
-  personalizedPrice: IPerso[] = [];
-  exteriorColorslides: IPhotos = [];
-  interiorColorslides: IInterior[] = [];
+  passToRims: boolean = false;
+  passToEquipment: boolean = false;
+
+  // equipementCategory!: IEquipmentCategory[]
+  interiorColorslides: Array<string> = [];
+  rimPhoto: string = '';
 
   constructor(
     private store: Store<{ configurator: any }>,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    // Subscribe to the configurator data to get updated data
+    // SCROLL INTO TOP WHEN LOADED
+    window.scrollTo(0, 0);
+
+    // GETTING ID
+  
+    // SUBSCRIBE TO CONFIGURATOR AND GETTING DATA
     this.store.select(selectConfiguratorData).subscribe((data) => {
-      this.configuratorData = data;
-      // console.log('Configurator Data:', this.configuratorData);
-    });
+      this.configuratorData = data; })
 
-    // DEFINING EACH RECEIVED DATA
-    this.car = this.configuratorData?.car;
-    this.colors = this.configuratorData?.colors;
-    this.exteriorColorslides = Object.values(
-      this.configuratorData?.cars[1].photos
-    ) as IPhotos;
-    this.interiorColorslides = this.configuratorData?.interior;
 
-    // CHECK IF MODEL IS PURE OR GT
+      // EQUIPMENTS CATEGORY SELECT TYPES
+    //   this.equipementCategory = Object.values(
+    //     this.configuratorData?.equipement_category
+    //   ) as IEquipmentCategory[];
+    // });
 
-    // if (this.configuratorData?.car[1]) {
-    //   this.personalizedPrice = this.configuratorData?.car[1].price;
-    // } else {
-    //   this.personalizedPrice = this.configuratorData?.car[2].price;
-    // }
+
+    this.store.select((state)=> state.configurator.selectedCar).subscribe((selectedCar)=>{
+      this.car = selectedCar
+    })
+
   }
 
-  loadExteriorSection() {
+  getRimPhoto(colorName: string): string {
+    const rim = this.car.initial_rim.find(rim => rim.color === colorName);
+    return rim ? rim.photo : '';
+  }
+  // PRICE CARD TOGGLE FUNCTION
+  toggleTotalCard(): void{
+    this.totalCard = !this.totalCard;
+  }
+
+  // LOADER FUNCTIONS
+  loadExteriorSection():void {
     this.passToExterior = true;
     const exteriorSection = document.getElementById('exterior');
 
@@ -59,14 +76,8 @@ export class BuildComponent implements OnInit {
       this.renderer.setStyle(exteriorSection, 'display', 'block');
       exteriorSection.scrollIntoView({ behavior: 'smooth' });
     }
-
-    const totalCard = document.getElementById('total-card');
-    if (totalCard) {
-      this.renderer.setStyle(totalCard, 'display', 'block');
-    }
   }
-
-  loadInteriorSection() {
+  loadInteriorSection():void {
     this.passToInterior = true;
     const interiorSection = document.getElementById('interior');
 
@@ -75,40 +86,70 @@ export class BuildComponent implements OnInit {
       interiorSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  loadRimsSection():void{
+    this.passToRims = true;
+    const rimsSection = document.getElementById('rims');
 
-  handleColorClick(index: number) {
-    this.clickedColorIndex = index;
-    const clickedColor = this.colors[index];
-    console.log('Clicked Color:', clickedColor);
+    if (rimsSection) {
+      this.renderer.setStyle(rimsSection, 'display', 'block');
+      rimsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  loadEquipmentSection():void{
+    this.passToEquipment = true;
+    const equipmentSection = document.getElementById('equipment');
+
+    if (equipmentSection) {
+      this.renderer.setStyle(equipmentSection, 'display', 'block');
+      equipmentSection.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
-  slideLeftExterior(): void {
-    setTimeout(() => {
-      this.currentIndex =
-        (this.currentIndex - 1 + this.exteriorColorslides.length) %
-        this.exteriorColorslides.length;
-    }, 200);
+// CLICK HANDLER FUNCTIONS
+  handleColorClick(color: IColor) {
+    this.selectedColor = color;
+    console.log('Clicked Color:', color);
+    this.store.dispatch(selectColor({color}))
+    this.store.dispatch(afterSelection())
   }
 
-  slideRightExterior(): void {
-    setTimeout(() => {
-      this.currentIndex =
-        (this.currentIndex + 1) % this.exteriorColorslides.length;
-    }, 200);
-  }
+  // handleInteriorClick(index: number) {
+  //   this.clickedColorIndex = index;
+  //   const clickedColor = this.interiorSelect[index];
+  //   console.log('Clicked Interior:', clickedColor);
+  // }
+  // handleRimClick(index: number) {
+  //   this.clickedColorIndex = index;
+  //   const clickedColor = this.rims[index]
+  //   console.log('Clicked Rims:', clickedColor);
+  // }
 
-  slideLeftInterior(): void {
-    setTimeout(() => {
-      this.currentIndex =
-        (this.currentIndex - 1 + this.exteriorColorslides.length) %
-        this.exteriorColorslides.length;
-    }, 200);
+  //SLIDER FUNCTIONS
+slideLeftExterior(): void {
+  if ((this.currentIndex - 1) < 0) {
+    this.currentIndex = this.car.pictures.length - 1;
+  } else {
+    this.currentIndex = this.currentIndex - 1;
   }
-
-  slideRightInterior(): void {
-    setTimeout(() => {
-      this.currentIndex =
-        (this.currentIndex + 1) % this.exteriorColorslides.length;
-    }, 200);
+}
+slideRightExterior(): void {
+  if (this.currentIndex + 1 === this.car.pictures.length) {
+    this.currentIndex = 0;
+  } else {
+    this.currentIndex = this.currentIndex + 1;
   }
+}
+  // slideLeftInterior(): void {
+  //   setTimeout(() => {
+  //     this.currentIndex =
+  //       (this.currentIndex - 1 + this.interiorColorslides.length) %
+  //       this.interiorColorslides.length;
+  //   }, 200);
+  // }
+  // slideRightInterior(): void {
+  //   setTimeout(() => {
+  //     this.currentIndex =
+  //       (this.currentIndex + 1) % this.interiorColorslides.length;
+  //   }, 200);
+  // }
 }
