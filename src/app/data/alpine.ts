@@ -3,293 +3,310 @@ import ICar from "../model/car.model";
 import IColor from "../model/color.model";
 import IEquipment from "../model/equipment.model";
 import IRim from "../model/rim.model";
-import ISellerie from "../model/sellerie.model";
+import IInterior from "../model/interior.model";
 
 export interface IData {
-  cars : ICar[],
-  colors : IColor[],
-  rims : IRim[],
-  sellerie : ISellerie[],
-  equipements : {
-    [key:string] : IEquipment[]
+  cars: ICar[],
+  colors: IColor[],
+  rims: IRim[],
+  interior: IInterior[],
+  equipments: {
+    [key: string]: IEquipment[]
   },
-  accessoires : {
-    [key:string] : IAccessoire[]
+  accessoires: {
+    [key: string]: IAccessoire[]
   },
-  pictures : Array<{name : string, color : string, jante : string, picturesList : Array<string>}>
+  photos: Array<{ name: string, color: string, rim: string, list: Array<string> }>
 }
 
 
- const DATA : IData = {
+const DATA: IData = {
   cars: [
     {
-     version : {
-       id: 1,
-       name: "A110 Pure",
-       price: 62500,
-       version_photo: "../assets/images/configurateur/modele/selection/pure.png",
+      version: {
+        id: 1,
+        name: "A110 Pure",
+        price: 62500,
+        version_photo: "../assets/images/configurateur/modele/selection/pure.png",
       },
-     initial_color: {
-       name: "ice white",
-       price: 0,
-       photo: "../assets/images/configurateur/couleurs/selection/blanc.jpg",
-     },
-     initial_rim: [
+      initial_color: {
+        name: "ice white",
+        price: 0,
+        photo: "../assets/images/configurateur/couleurs/selection/blanc.jpg",
+      },
+      initial_rim:
       {
-       name: "standard",
-       photo:
-        "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-standard (2).jpg",
-       price: 0,
-       option :'A110 Pure',
-       color: 'ice white'
-     },
-     {
-      name: "standard",
-      photo:
-       "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-standard (3).jpg",
-      price: 0,
-      option :'A110 Pure',
-      color: 'blue abysse'
-     },
-     {
-      name: "standard",
-      photo:
-       "../assets/images/configurateur/jantes/vues/couleur-noir_jante-standard (1).jpg",
-      price: 0,
-      option :'A110 Pure',
-      color: 'deep black metalic'
-     },
-    ],
-     scellerie : {
-       name: "cuir noir et dynamica",
-       picture:
-         "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
-       price: 0,
-       option : "",
-             pictures : [
-      ]
-     },
-     features: {
-      acceleration: 4.5,
-      max_power: 252,
-      max_speed: 250,
-      torque: 320,
-      engine: "1.8 inline-4 turbo",
-      transmission: "7-speed automatic transmission",
-      version_photo: "../../../assets/images/homepage/versions/ALPINE-PURE-1.png",
+        name: "standard",
+        selection: "../assets/images/configurateur/jantes/selection/jante-standard.jpg",
+        price: 0,
+        option: "A110 Pure",
+        photos: [
+          {
+            color: "ice white",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-standard (2).jpg"
+          },
+          {
+            color: "blue abysse",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-standard (3).jpg"
+          },
+          {
+            color: "deep black metalic",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-noir_jante-standard (1).jpg"
+          },
+        ],
+      },
+      initial_interior: {
+        name: "black dynamica",
+        price: 600,
+        option: "A110 Pure",
+        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
+        photos: [
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-1.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-2.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-3.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
+        ]
+      },
+      features: {
+        acceleration: 4.5,
+        max_power: 252,
+        max_speed: 250,
+        torque: 320,
+        engine: "1.8 inline-4 turbo",
+        transmission: "7-speed automatic transmission",
+        version_photo: "../../../assets/images/homepage/versions/ALPINE-PURE-1.png",
+      },
+      photos: [
+        "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (1).jpg",
+        "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (2).jpg",
+        "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (3).jpg",
+        "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (4).jpg",
+      ],
+      equipments: {
+        media: [
+          {
+            id: 3,
+            name: "audio system standard",
+            photo:
+              "../assets/images/configurateur/equipements/categories/media et navigation/audio-standard.jpg",
+            price: 0,
+          },
+        ],
+        comfort: [
+          {
+            id: 7,
+            name: "interior mirror electrochrome",
+            photo: "../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
+            price: 0,
+          },
+        ],
+        drive: [
+          {
+            id: 8,
+            name: "cruise control & speed limiter",
+            photo:
+              "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
+            price: 0,
+          },
+        ],
+        security: [
+          {
+            id: 15,
+            name: "emergency breaking assistance",
+            photo:
+              "../assets/images/configurateur/equipements/categories/securite/aide-freinage-durgence.jpg",
+            price: 0,
+          },
+          {
+            id: 16,
+            name: "frontal airbags",
+            photo:
+              "../assets/images/configurateur/equipements/categories/securite/airbag.jpg",
+            price: 0,
+          },
+        ],
+        personalize_body: [
+          {
+            id: 18,
+            name: "anthracite brake calipers",
+            photo: '../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
+            price: 0,
+          },
+        ],
+        personalize_interior: [
+          {
+            id: 21,
+            name: "harmony carbon mat",
+            photo:
+              "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
+            price: 0,
+          },
+        ]
+      },
+      accessoires: {
+        Transport_et_protection: [],
+        multimedia: [],
+        Intérieur: [],
+        Exterieur: [],
+        Matériel_de_garage: [],
+      },
+      total_price: {
+        initial_price: 62500,
+        exterior: 0,
+        rims: 0,
+        interior: 0,
+        equipments: 0,
+        accessories: 0,
+        total: 62500
+      }
     },
-     pictures: [
-       "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (1).jpg",
-       "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (2).jpg",
-       "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (3).jpg",
-       "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (4).jpg",
-     ],
-     equipements: {
-       media_et_naviguation: [
+
+    // LEGEND VERSION 2nd CAR
+
+    {
+      version: {
+        id: 2,
+        name: "A110 Legend",
+        price: 72500,
+        version_photo: "../assets/images/configurateur/modele/selection/legende.png",
+      },
+      initial_color: {
+        name: "ice white",
+        price: 0,
+        photo: "../assets/images/configurateur/couleurs/selection/blanc.jpg",
+      },
+      initial_rim:
+      {
+        name: "legend",
+        selection: "../assets/images/configurateur/jantes/selection/jante-legende.jpg",
+        price: 0,
+        option: "A110 Legend",
+        photos: [
           {
-           id: 3,
-           name: "Système Audio standard",
-           picture:
-           "../assets/images/configurateur/equipements/categories/media et navigation/audio-standard.jpg",
-           price: 0,
+            color: "ice white",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-legende (2).jpg"
+          },
+          {
+            color: "blue abysse",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-legende (3).jpg"
+          },
+          {
+            color: "deep black metalic",
+            photo: "../assets/images/configurateur/jantes/vues/couleur-noir_jante-legende (1).jpg"
           },
         ],
-       confort: [
-         {
-           id: 5, 
-           name: "Retroviseur intérieur électrochrome",
-           picture:"../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
-           price: 0,
+      },
+      initial_interior: {
+        name: "black leather",
+        price: 0,
+        option: "A110 Legend",
+        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
+        photos: [
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-1.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-2.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-3.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+          "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
+        ]
+      },
+      features: {
+        acceleration: 4.2,
+        max_power: 300,
+        max_speed: 250,
+        torque: 340,
+        engine: "1.8 inline-4 turbo",
+        transmission: "7-speed automatic transmission",
+        version_photo: "../../../assets/images/homepage/versions/ALPINE-LEGENDE-1.png",
+      },
+      photos: [
+        "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-1.jpg",
+        "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-2.jpg",
+        "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-3.jpg",
+        "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-4.jpg",
+      ],
+      equipments: {
+        design: [
+        ],
+        media: [
+          {
+            id: 3,
+            name: "audio system standard",
+            photo:
+              "../assets/images/configurateur/equipements/categories/media et navigation/audio-standard.jpg",
+            price: 0,
           },
         ],
-       conduite : [
+        comfort: [
           {
-           id: 6,
-           name: "Régulateur / limiteur de vitesse",
-           picture:
-             "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
-           price: 0,
-         },
+            id: 5,
+            name: "interior mirror electrochrome",
+            photo:
+              "../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
+            price: 0,
+          },
         ],
-       securite: [
-         {
-           id : 11,
-           name: "Assistance au freinage d'urgence",
-           picture:
-           "../assets/images/configurateur/equipements/categories/securite/aide-freinage-durgence.jpg",
-           price: 0,
+        drive: [
+          {
+            id: 6,
+            name: "cruise control & speed limiter",
+            photo:
+              "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
+            price: 0,
+          },
+        ],
+        security: [
+          {
+            id: 11,
+            name: "emergency breaking assistance",
+            photo:
+              "../assets/images/configurateur/equipements/categories/securite/aide-freinage-durgence.jpg",
+            price: 0,
           },
           {
             id: 12,
-            name: "Airbags frontaux conducteur et passager",
-            picture:
-            "../assets/images/configurateur/equipements/categories/securite/airbag.jpg",
+            name: "frontal airbags",
+            photo:
+              "../assets/images/configurateur/equipements/categories/securite/airbag.jpg",
             price: 0,
           },
-      ],
-      perso_extérieure:[
-         {
-           id: 13,
-           name: "Etriers de frein couleur Gris Anthracite",
-           picture:'../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
-           price: 0,
-         },
         ],
-       perso_intérieur:[
-         {
-             id: 15,
-             name: "Harmonie carbone mat",
-             picture:
-               "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
-             price: 0,
-           },
-      ]
-     },
-     accessoires: {
-       Transport_et_protection: [],
-       multimedia:[],
-       Intérieur:[],
-       Exterieur:[],
-       Matériel_de_garage:[],
-     },
-   },
-
-   //voiture 2 la legende
-
-   {
-    version : {
-
-      id: 2,
-      name: "A110 Legend",
-      price: 72500,
-      version_photo: "../assets/images/configurateur/modele/selection/legende.png",
-    },
-    initial_color: {
-       name: "ice white",
-       price: 0,
-       photo: "../assets/images/configurateur/couleurs/selection/blanc.jpg",
-     },
-     initial_rim: [
-      {
-       name: "legend",
-       photo:
-        "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-legende (2).jpg",
-       price: 0,
-       option :'A110 Legend',
-       color: 'ice white'
-     },
-     {
-      name: "legend",
-      photo:
-       "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-legende (3).jpg",
-      price: 0,
-      option :'A110 Legend',
-      color: 'blue abysse'
-     },
-     {
-      name: "legend",
-      photo:
-       "../assets/images/configurateur/jantes/vues/couleur-noir_jante-legende (1).jpg",
-      price: 0,
-      option :'A110 Legend',
-      color: 'deep black metalic'
-     },
-    ],
-     scellerie: {
-       name: "Sièges Confort en cuir noir",
-       picture: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
-       price: 0,
-       option : "",
-       pictures : [
-      ]
-     },
-     features: {
-      acceleration: 4.5,
-      max_power: 252,
-      max_speed: 250,
-      torque: 320,
-      engine: "1.8 inline-4 turbo",
-      transmission: "7-speed automatic transmission",
-      version_photo: "../../../assets/images/homepage/versions/ALPINE-LEGENDE-1.png",
-    },
-     pictures: [
-       "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-1.jpg",
-       "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-2.jpg",
-       "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-3.jpg",
-       "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-4.jpg",
-     ],
-     equipements: {
-       design: [
-  
-       ],
-       media_et_naviguation: [
-         {
-           id: 3,
-           name: "Système Audio standard",
-           picture:
-           "../assets/images/configurateur/equipements/categories/media et navigation/audio-standard.jpg",
-           price: 0,
-         },
-      ],
-       confort: [
-         {
-           id: 5,
-           name: "Retroviseur intérieur électrochrome",
-           picture:
-             "../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
-           price: 0,
-         },
-      ],
-       conduite : [
-         {
-           id: 6,
-           name: "Régulateur / limiteur de vitesse",
-           picture:
-             "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
-           price: 0,
-         },
-      ],
-       securite: [
-         {
-           id: 11,
-           name: "Assistance au freinage d'urgence",
-           picture:
-             "../assets/images/configurateur/equipements/categories/securite/aide-freinage-durgence.jpg",
-           price: 0,
-         },
-         {
-           id: 12,
-           name: "Airbags frontaux conducteur et passager",
-           picture:
-             "../assets/images/configurateur/equipements/categories/securite/airbag.jpg",
-           price: 0,
-         },
-      ],
-       perso_extérieure:[
-         {
-           id: 13,
-           name: "Etriers de frein couleur Gris Anthracite",
-           picture:'../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
-           price: 0,
-         },
-        ],
-       perso_intérieur:[
-         {
-           id: 15,
-           name: "Harmonie carbone mat",
-           picture:
-           "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
-           price: 0,
+        personalize_body: [
+          {
+            id: 13,
+            name: "anthracite brake calipers",
+            photo: '../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
+            price: 0,
           },
-       ]
-    },
-     accessoires: {
-       Transport_et_protection: [],
-       multimedia:[],
-       Intérieur:[],
-       Exterieur:[],
-       Matériel_de_garage:[],
-     },
+        ],
+        personalize_interior: [
+          {
+            id: 15,
+            name: "harmony carbon mat",
+            photo:
+              "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
+            price: 0,
+          },
+        ]
+      },
+      accessoires: {
+        Transport_et_protection: [],
+        multimedia: [],
+        Intérieur: [],
+        Exterieur: [],
+        Matériel_de_garage: [],
+      },
+      total_price: {
+        initial_price: 62500,
+        exterior: 0,
+        rims: 0,
+        interior: 0,
+        equipments: 0,
+        accessories: 0,
+        total: 62500
+      }
     },
   ],
   //choix des améliorations voitures
@@ -310,251 +327,314 @@ export interface IData {
       price: 1800,
     },
   ],
-  sellerie: [
+  interior: [
     {
-      name: "cuir noir et dynamica",
-      picture:
-      "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
-      price: 0,
-      option: "A110 Pure",
-      pictures : [
-      ]
-    },
-    {
-      name: "Sièges Confort en cuir noir perforé",
-      picture:
-      "../assets/images/configurateur/interieurs/selection/cuir-noir_perfore.jpg",
-      price: 800,
-      option: "A110 Pure",
-      pictures : [
-      ]
-    },
-    {
-      name: "Sièges Confort en cuir noir",
-      picture: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
+      name: "black leather",
       price: 0,
       option: "A110 Legend",
-      pictures : [
+      selection: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
+      photos: [
+        "../assets/images/configurateur/interieurs/vues/cuir-noir-1.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir-2.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir-3.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
       ]
     },
     {
-      name: "Sièges Confort en cuir brun",
-      picture: "../assets/images/configurateur/interieurs/selection/cuir-brun.jpg",
-      price: 800,
+      name: "brown leather",
+      price: 0,
       option: "A110 Legend",
-      pictures : [
+      selection: "../assets/images/configurateur/interieurs/selection/cuir-brun.jpg",
+      photos: [
+        "../assets/images/configurateur/interieurs/vues/cuir-brun-1.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-brun-2.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-brun-3.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
+      ]
+    },
+    {
+      name: "black dynamica",
+      price: 600,
+      option: "A110 Pure",
+      selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
+      photos: [
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-1.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-2.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-3.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
+      ]
+    },
+    {
+      name: "perforated leather",
+      price: 800,
+      option: "A110 Pure",
+      selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_perfore.jpg",
+      photos: [
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_perfore-1.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_perfore-2.jpg",
+        "../assets/images/configurateur/interieurs/vues/cuir-noir_perfore-3.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
+        "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
       ]
     },
   ],
   rims: [
     {
       name: "standard",
-      photo: "../assets/images/configurateur/jantes/selection/jante-standard.jpg",
+      selection: "../assets/images/configurateur/jantes/selection/jante-standard.jpg",
       price: 0,
       option: "A110 Pure",
-      color: '',
+      photos: [
+        {
+          color: "ice white",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-standard (2).jpg"
+        },
+        {
+          color: "blue abysse",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-standard (3).jpg"
+        },
+        {
+          color: "deep black metalic",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-noir_jante-standard (1).jpg"
+        },
+      ],
     },
     {
       name: "legend",
-      photo: "../assets/images/configurateur/jantes/selection/jante-legende.jpg",
+      selection: "../assets/images/configurateur/jantes/selection/jante-legende.jpg",
       price: 0,
       option: "A110 Legend",
-      color: '',
+      photos: [
+        {
+          color: "ice white",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-legende (2).jpg"
+        },
+        {
+          color: "blue abysse",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-legende (3).jpg"
+        },
+        {
+          color: "deep black metalic",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-noir_jante-legende (1).jpg"
+        },
+      ],
     },
     {
       name: "serac",
-      photo: "../assets/images/configurateur/jantes/selection/jante-serac.jpg",
-      price: 1000,
-      option: "A110 Pure",
-      color: '',
+      selection: "../assets/images/configurateur/jantes/selection/jante-serac.jpg",
+      price: 900,
+      option: "A110 Legend",
+      photos: [
+        {
+          color: "ice white",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-blanc_jante-serac (2).jpg"
+        },
+        {
+          color: "blue abysse",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-bleu_jante-serac (3).jpg"
+        },
+        {
+          color: "deep black metalic",
+          photo: "../assets/images/configurateur/jantes/vues/couleur-noir_jante-serac (1).jpg"
+        },
+      ],
     },
   ],
-  equipements: {
+  equipments: {
     design: [
-
       {
         id: 1,
-        name: "Pack héritage",
-        picture:
-        "../assets/images/configurateur/equipements/categories/design/pack-heritage.jpg",
-        price: 180,
+        name: "light-alloy passenger footpegs",
+        photo:
+          "../assets/images/configurateur/equipements/categories/design/repose-pied-alu.jpg",
+        price: 96,
       },
       {
         id: 2,
-        name: "Repose-pieds passager aluminium",
-        picture:
-        "../assets/images/configurateur/equipements/categories/design/repose-pied-alu.jpg",
-        price: 96,
+        name: "heritage pack",
+        photo:
+          "../assets/images/configurateur/equipements/categories/design/pack-heritage.jpg",
+        price: 180,
       },
     ],
-    media_et_naviguation: [
+    media: [
       {
         id: 3,
-        name: "Système Audio standard",
-        picture:
+        name: "audio system standard",
+        photo:
           "../assets/images/configurateur/equipements/categories/media et navigation/audio-standard.jpg",
         price: 0,
       },
       {
-        id: 3,
-        name: "Système Audio Focal",
-        picture:
+        id: 4,
+        name: "alpine telematics",
+        photo:
+          "../assets/images/configurateur/equipements/categories/media et navigation/alpine-metrics.jpg",
+        price: 204,
+      },
+      {
+        id: 5,
+        name: "audio system focal",
+        photo:
           "../assets/images/configurateur/equipements/categories/media et navigation/audio-focal.jpg",
         price: 600,
       },
       {
-        id: 3,
-        name: "Système Audio Focal Premium",
-        picture:
+        id: 6,
+        name: "audio system focal premium",
+        photo:
           "../assets/images/configurateur/equipements/categories/media et navigation/audio-premium.jpg",
         price: 1200,
       },
-      {
-        id: 4,
-        name: "Alpine Télémétrics",
-        picture:
-        "../assets/images/configurateur/equipements/categories/media et navigation/alpine-metrics.jpg",
-        price: 204,
-      }
+
     ],
-    confort: [
+    comfort: [
       {
-        id: 5,
-        name: "Retroviseur int électrochrome",
-        picture:"../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
+        id: 7,
+        name: "interior mirror electrochrome",
+        photo: "../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
         price: 0,
       },
       {
-        id: 6,
-        name: "Régulateur & limiteur de vitesse",
-        picture:
+        id: 8,
+        name: "cruise control & speed limiter",
+        photo:
           "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
         price: 0,
       },
       {
-        id: 7,
-        name: "Rétroviseurs ext. chauf.élec",
-        picture:
+        id: 9,
+        name: "electric heated front mirrors",
+        photo:
           "../assets/images/configurateur/equipements/categories/confort/retro-ext-chaffant.jpg",
         price: 504,
       },
       {
-        id: 8,
-        name: "Alpine Pack de rangement",
-        picture:
+        id: 10,
+        name: "alpine pack storage",
+        photo:
           "../assets/images/configurateur/equipements/categories/confort/pack-rangement.jpg",
         price: 504,
       },
-    
+
     ],
-    conduite: [
+    drive: [
       {
-        id: 9,
-        name: "Aide au stationnement AR",
-        picture:
+        id: 11,
+        name: "rear parctronic",
+        photo:
           "../assets/images/configurateur/equipements/categories/conduite/aide-stationnement-ar.jpg",
         price: 420,
       },
       {
-        id: 9,
-        name: "Aide au stationnement AV/AR",
-        picture:
+        id: 12,
+        name: "front & rear parctronic",
+        photo:
           "../assets/images/configurateur/equipements/categories/conduite/aide-stationnement-av-ar.jpg",
         price: 750,
       },
       {
-        id: 9,
-        name: "Aide au stationnement AV/AR camérarecul",
-        picture:
+        id: 13,
+        name: "front & rear parctronic with rear-view camera",
+        photo:
           "../assets/images/configurateur/equipements/categories/conduite/camera-recul.jpg",
         price: 1200,
       },
       {
-        id: 10,
-        name: "Echappement Sport actif",
-        picture:
+        id: 14,
+        name: "active sport exhaust",
+        photo:
           "../assets/images/configurateur/equipements/categories/conduite/echappement-sport.jpg",
         price: 1500,
-      }  
+      }
     ],
-    securite: [
+    security: [
       {
-        id: 11,
-        name: "Assistance au freinage d'urgence",
-        picture:
+        id: 15,
+        name: "emergency breaking assistance",
+        photo:
           "../assets/images/configurateur/equipements/categories/securite/aide-freinage-durgence.jpg",
         price: 0,
       },
       {
-        id: 12,
-        name: "Airbags frontaux conducteur/passager",
-        picture:
+        id: 16,
+        name: "frontal airbags",
+        photo:
           "../assets/images/configurateur/equipements/categories/securite/airbag.jpg",
         price: 0,
       },
       {
-        id: 11,
-        name: "freinage Haute-Perf 320mm",
-        picture:
+        id: 17,
+        name: "high-perfermance breaks 320mm",
+        photo:
           "../assets/images/configurateur/equipements/categories/securite/freinage-haute-perf.jpg",
         price: 1000,
       },
     ],
-    perso_extérieure: [
+    personalize_body: [
       {
-        id: 13,
-        name: "Etriers de frein Gris Anthracite",
-        picture:
+        id: 18,
+        name: "anthracite brake calipers",
+        photo:
           "../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg",
         price: 0,
       },
       {
-        id: 13,
-        name: " Etriers de frein Bleu Alpine",
-        picture:
-          "../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-bleu.jpg",
-        price: 384,
-      },
-      {
-        id: 14,
-        name: "Logo Alpine ailes avant",
-        picture:
+        id: 19,
+        name: "front fender logos",
+        photo:
           "../assets/images/configurateur/equipements/categories/personnalisation exterieure/logo-alpine.jpg",
         price: 120,
       },
-    ],
-    perso_intérieur: [
       {
-        id: 15,
-        name: "Harmonie carbone mat",
-        picture:
+        id: 20,
+        name: "blue alpine brake calipers",
+        photo:
+          "../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-bleu.jpg",
+        price: 384,
+      },
+
+    ],
+    personalize_interior: [
+      {
+        id: 21,
+        name: "harmony carbon mat",
+        photo:
           "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
         price: 0,
       },
       {
-        id: 16,
-        name: "Pédalier en aluminium",
-        picture:
-          "../assets/images/configurateur/equipements/categories/personnalisation interieure/pedal-alu.jpg",
-        price: 120,
-      },
-      {
-        id: 17,
-        name: "Logo volant Bleu Alpine",
-        picture:
+        id: 22,
+        name: "steering wheel blue logo",
+        photo:
           "../assets/images/configurateur/equipements/categories/personnalisation interieure/logo-volant.jpg",
         price: 84,
       },
       {
-        id: 18,
-        name: "Sièges chauffants",
-        picture:
+        id: 23,
+        name: "aluminum pedals",
+        photo:
+          "../assets/images/configurateur/equipements/categories/personnalisation interieure/pedal-alu.jpg",
+        price: 120,
+      },
+
+      {
+        id: 24,
+        name: "heated seats",
+        photo:
           "../assets/images/configurateur/equipements/categories/personnalisation interieure/siege-chauffant.jpg",
         price: 400,
       },
     ]
   },
-  accessoires : {
+  accessoires: {
     Transport_et_protection: [
       {
         id: 1,
@@ -656,36 +736,36 @@ export interface IData {
       },
     ],
   },
-  pictures: [
+  photos: [
     {
       name: "A110 Pure",
       color: "ice white",
-      jante: "standard",
-      picturesList: [
+      rim: "standard",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (3).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_standard (4).jpg",
       ]
     },
-  
+
     {
       name: "A110 Pure",
       color: "blue abysse",
-      jante: "standard",
-      picturesList: [
+      rim: "standard",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_standard (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_standard (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_standard (3).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_standard (4).jpg",
       ]
     },
-  
+
     {
       name: "A110 Pure",
       color: "deep black metalic",
-      jante: "standard",
-      picturesList: [
+      rim: "standard",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_standard (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_standard (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_standard (3).jpg",
@@ -694,9 +774,9 @@ export interface IData {
     },
     {
       name: "A110 Pure",
-      color: "blanc glacier",
-      jante: "serac",
-      picturesList: [
+      color: "ice white",
+      rim: "serac",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_serac (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_serac (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_blanche-jante_serac (3).jpg",
@@ -705,9 +785,9 @@ export interface IData {
     },
     {
       name: "A110 Pure",
-      color: "Teinte spéciale Bleu Alpine",
-      jante: "serac",
-      picturesList: [
+      color: "blue abysse",
+      rim: "serac",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_serac (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_serac (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_bleu-jante_serac (3).jpg",
@@ -716,9 +796,9 @@ export interface IData {
     },
     {
       name: "A110 Pure",
-      color: "Teinte métallisée Noir Profond",
-      jante: "serac",
-      picturesList: [
+      color: "deep black metalic",
+      rim: "serac",
+      list: [
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_serac (1).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_serac (2).jpg",
         "../assets/images/configurateur/modele/pure/modele_pure-couleur_noire-jante_serac (3).jpg",
@@ -727,9 +807,9 @@ export interface IData {
     },
     {
       name: "A110 Legend",
-      color: "blanc glacier",
-      jante: "legend",
-      picturesList: [
+      color: "ice white",
+      rim: "legend",
+      list: [
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-1.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-2.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_blanc-jante_legende-3.jpg",
@@ -738,21 +818,21 @@ export interface IData {
     },
     {
       name: "A110 Legend",
-      color: "Teinte spéciale Bleu Alpine",
-      jante: "legend",
-      picturesList: [
+      color: "blue abysse",
+      rim: "legend",
+      list: [
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_bleu-jante_legende-1.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_bleu-jante_legende-2.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_bleu-jante_legende-3.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_bleu-jante_legende-4.jpg",
       ]
     },
-  
+
     {
       name: "A110 Legend",
-      color: "Teinte métallisée Noir Profond",
-      jante: "legend",
-      picturesList: [
+      color: "deep black metalic",
+      rim: "legend",
+      list: [
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_noir-jante_legende-1.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_noir-jante_legende-2.jpg",
         "../assets/images/configurateur/modele/legende/modele_legende-couleur_noir-jante_legende-3.jpg",

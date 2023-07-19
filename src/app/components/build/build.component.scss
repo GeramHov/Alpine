@@ -148,8 +148,7 @@ $playfair: "Playfair Display", serif;
     // display: none;
 }
 
-// #equipment{
-    // background-image: url(../../../assets/background/34345000_qet6.jpg);
-    // background-size: cover;
-    // display: none;
-// }
+.disabled-item {
+    opacity: 0.6; /* Example: You can set the desired style for disabled items */
+    pointer-events: none; /* This prevents click events on disabled items */
+}

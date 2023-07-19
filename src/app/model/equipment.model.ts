@@ -1,6 +1,6 @@
 export default interface IEquipment {
     id: number;
     name: string;
-    picture: string;
+    photo: string;
     price: number;
   }

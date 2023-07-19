@@ -3,9 +3,11 @@ import { Store } from '@ngrx/store';
 import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer';
 import { ActivatedRoute } from '@angular/router';
 import ICar from 'src/app/model/car.model';
-import { afterSelection, selectColor } from 'src/app/action/configurator.action';
+import { afterSelection, selectColor, selectRim, selectInterior } from 'src/app/action/configurator.action';
 import { IData } from 'src/app/data/alpine';
 import IColor from 'src/app/model/color.model';
+import IRim from 'src/app/model/rim.model';
+import IInterior from 'src/app/model/interior.model';
 
 @Component({
   selector: 'app-build',
@@ -16,59 +18,103 @@ export class BuildComponent implements OnInit {
   configuratorData!: IData;
   car!: ICar;
   currentIndex: number = 0;
-  
+
   selectedColor: IColor | null = null;
+  selectedRim: IRim | null = null;
+  selectedInterior: IInterior | null = null;
   totalCard: boolean = false;
   passToExterior: boolean = false;
   passToInterior: boolean = false;
   passToRims: boolean = false;
   passToEquipment: boolean = false;
+  filteredRimPhoto: {color: string, photo: string}[] = [];
+  equipmentKeys: string[] | undefined = undefined;
 
-  // equipementCategory!: IEquipmentCategory[]
+  equipmentListToggler: { [key: string]: boolean } = {};
+
   interiorColorslides: Array<string> = [];
   rimPhoto: string = '';
+  disabledStatus: { [key: string]: boolean } = {};
+
+  equipmentCategoryPhotos: { [key: string]: string } = {
+    design: "../../../assets/images/configurateur/equipements/selection/design.jpg",
+    media: "../../../assets/images/configurateur/equipements/selection/media-nav.jpg",
+    comfort: "../../../assets/images/configurateur/equipements/selection/confort.jpg",
+    drive: "../../../assets/images/configurateur/equipements/selection/conduite.jpg",
+    security: "../../../assets/images/configurateur/equipements/selection/securite.jpg",
+    personalize_body: "../../../assets/images/configurateur/equipements/selection/perso-ext.jpg",
+    personalize_interior: "../../../assets/images/configurateur/equipements/selection/perso-int.jpg",
+  };
 
   constructor(
     private store: Store<{ configurator: any }>,
     private renderer: Renderer2,
     private route: ActivatedRoute
-  ) {}
+  ) { 
+  }
 
   ngOnInit() {
     // SCROLL INTO TOP WHEN LOADED
     window.scrollTo(0, 0);
 
-    // GETTING ID
-  
-    // SUBSCRIBE TO CONFIGURATOR AND GETTING DATA
+    // SUBSCRIBE TO STORE AND GETTING THE WHOLE DATA
     this.store.select(selectConfiguratorData).subscribe((data) => {
-      this.configuratorData = data; })
-
-
-      // EQUIPMENTS CATEGORY SELECT TYPES
-    //   this.equipementCategory = Object.values(
-    //     this.configuratorData?.equipement_category
-    //   ) as IEquipmentCategory[];
-    // });
-
-
-    this.store.select((state)=> state.configurator.selectedCar).subscribe((selectedCar)=>{
-      this.car = selectedCar
+      this.configuratorData = data;
     })
+    // SUBSCRIBE TO STORE AND GETTING THE CURRENT VEHICLE DATA
+    this.store.select((state) => state.configurator.selectedCar).subscribe((selectedCar) => {
+      
+      this.car = selectedCar;
+      this.getRimPhoto();
 
+      // console.log(this.car);
+
+      this.equipmentKeys = Object.keys(this.configuratorData.equipments);
+      console.log(this.equipmentKeys);
+
+      this.disabledStatus = this.isEquipmentDisabled();
+      
+      
+
+    })
   }
 
-  getRimPhoto(colorName: string): string {
-    const rim = this.car.initial_rim.find(rim => rim.color === colorName);
-    return rim ? rim.photo : '';
+  isEquipmentDisabled(): { [key: number]: boolean } {
+    const disabledStatus: { [key: number]: boolean } = {};
+  
+    for (const key of Object.keys(this.car.equipments)) {
+      const carEquipments = this.car.equipments[key];
+  
+      for (const equipment of carEquipments) {
+        const equipmentId = equipment.id;
+        const isOptionDisabled = this.configuratorData.equipments[key].some(
+          (option) => option.id === equipmentId
+        );
+  
+        disabledStatus[equipmentId] = isOptionDisabled;
+      }
+    }
+  
+    return disabledStatus;
   }
+
+  // FILTER RIM PHOTO
+  getRimPhoto(){
+    this.filteredRimPhoto = this.car.initial_rim.photos.filter((photo) => photo.color === this.car.initial_color.name)
+    return this.filteredRimPhoto;
+  }
+
   // PRICE CARD TOGGLE FUNCTION
-  toggleTotalCard(): void{
+  toggleTotalCard(): void {
     this.totalCard = !this.totalCard;
   }
 
+toggleEquipmentList(categoryKey: string): void {
+  this.equipmentListToggler[categoryKey] = !this.equipmentListToggler[categoryKey];
+}
+
   // LOADER FUNCTIONS
-  loadExteriorSection():void {
+  loadExteriorSection(): void {
     this.passToExterior = true;
     const exteriorSection = document.getElementById('exterior');
 
@@ -77,7 +123,7 @@ export class BuildComponent implements OnInit {
       exteriorSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  loadInteriorSection():void {
+  loadInteriorSection(): void {
     this.passToInterior = true;
     const interiorSection = document.getElementById('interior');
 
@@ -86,7 +132,7 @@ export class BuildComponent implements OnInit {
       interiorSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  loadRimsSection():void{
+  loadRimsSection(): void {
     this.passToRims = true;
     const rimsSection = document.getElementById('rims');
 
@@ -95,7 +141,7 @@ export class BuildComponent implements OnInit {
       rimsSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  loadEquipmentSection():void{
+  loadEquipmentSection(): void {
     this.passToEquipment = true;
     const equipmentSection = document.getElementById('equipment');
 
@@ -105,51 +151,54 @@ export class BuildComponent implements OnInit {
     }
   }
 
-// CLICK HANDLER FUNCTIONS
+  // CLICK HANDLER FUNCTIONS
   handleColorClick(color: IColor) {
     this.selectedColor = color;
-    console.log('Clicked Color:', color);
-    this.store.dispatch(selectColor({color}))
+    this.store.dispatch(selectColor({ color }))
     this.store.dispatch(afterSelection())
   }
+  handleRimClick(rim: IRim) {
+    this.selectedRim = rim;
+    console.log('Clicked Rims:', rim);
+    this.store.dispatch(selectRim({ rim }))
+    // this.store.dispatch(afterSelection())
+  }
+  handleInteriorClick(interior: IInterior) {
+    this.selectedInterior = interior;
+    this.store.dispatch(selectInterior({ interior }))
 
-  // handleInteriorClick(index: number) {
-  //   this.clickedColorIndex = index;
-  //   const clickedColor = this.interiorSelect[index];
-  //   console.log('Clicked Interior:', clickedColor);
-  // }
-  // handleRimClick(index: number) {
-  //   this.clickedColorIndex = index;
-  //   const clickedColor = this.rims[index]
-  //   console.log('Clicked Rims:', clickedColor);
-  // }
+    // console.log('Clicked Interior:', interior);
+  }
 
   //SLIDER FUNCTIONS
-slideLeftExterior(): void {
-  if ((this.currentIndex - 1) < 0) {
-    this.currentIndex = this.car.pictures.length - 1;
-  } else {
-    this.currentIndex = this.currentIndex - 1;
+  slideLeftExterior(): void {
+    if ((this.currentIndex - 1) < 0) {
+      this.currentIndex = this.car.photos.length - 1;
+    } else {
+      this.currentIndex = this.currentIndex - 1;
+    }
+  }
+  slideRightExterior(): void {
+    if (this.currentIndex + 1 === this.car.photos.length) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex = this.currentIndex + 1;
+    }
+  }
+  ////////////////////////////
+  slideLeftInterior(): void {
+    if ((this.currentIndex - 1) < 0) {
+      this.currentIndex = this.car.initial_interior.photos.length - 1;
+    } else {
+      this.currentIndex = this.currentIndex - 1;
+    }
+  }
+  slideRightInterior(): void {
+    if (this.currentIndex + 1 === this.car.initial_interior.photos.length) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex = this.currentIndex + 1;
+    }
   }
 }
-slideRightExterior(): void {
-  if (this.currentIndex + 1 === this.car.pictures.length) {
-    this.currentIndex = 0;
-  } else {
-    this.currentIndex = this.currentIndex + 1;
-  }
-}
-  // slideLeftInterior(): void {
-  //   setTimeout(() => {
-  //     this.currentIndex =
-  //       (this.currentIndex - 1 + this.interiorColorslides.length) %
-  //       this.interiorColorslides.length;
-  //   }, 200);
-  // }
-  // slideRightInterior(): void {
-  //   setTimeout(() => {
-  //     this.currentIndex =
-  //       (this.currentIndex + 1) % this.interiorColorslides.length;
-  //   }, 200);
-  // }
-}
+

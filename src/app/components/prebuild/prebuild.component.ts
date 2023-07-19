@@ -64,14 +64,14 @@ export class PrebuildComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectConfiguratorData).subscribe((data) => {
       this.configuratorData = data;
-      console.log('Configurator Data:', this.configuratorData);
+      // console.log('Configurator Data:', this.configuratorData);
     });
 
     // DEFINITION OF ARRAY
 
     // CALL THE SLIDE SHOW
     setInterval(() => {
-      console.log('slide');
+      // console.log('slide');
       
       this.slideRight();
     }, 3000);

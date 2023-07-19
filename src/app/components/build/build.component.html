@@ -14,28 +14,61 @@
         </div>
         <hr *ngIf="totalCard">
         <ul [ngClass]="totalCard? '' : 'py-5'">
-            <li class="ps-1">Base: <span class="ps-20">{{ car.version.price | currency:'USD':'symbol':'1.0-2'}}</span>
-            </li>
-            <li class="ps-1">
-                Color: <span></span>
-            </li>
-            <li class="ps-1">
-                Interior: <span></span>
-            </li>
-            <li class="ps-1">
-                Rims: <span></span>
-            </li>
-            <li class="ps-1">
-                Equipments: <span></span>
-            </li>
-            <li class="ps-1">
-                Accessories: <span></span>
-            </li>
+            <div class="flex justify-between pe-2">
+                <li class="ps-1">Base:
+                </li>
+                <span>{{ car.total_price.initial_price|
+                    currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="flex justify-between pe-2">
+                <li class="ps-1">
+                    Color:
+                </li>
+                <span *ngIf="car.total_price.exterior">{{ car.total_price.exterior |
+                    currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="flex justify-between pe-2">
+
+                <li class="ps-1">
+                    Rims:
+                </li>
+                <span *ngIf="car.total_price.rims">{{ car.total_price.rims |
+                    currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="flex justify-between pe-2">
+
+                <li class="ps-1">
+                    Interior:
+                </li>
+                <span *ngIf="car.total_price.interior">{{ car.total_price.interior |
+                    currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="flex justify-between pe-2">
+
+                <li class="ps-1">
+                    Equipments:
+                </li>
+                <span *ngIf="car.total_price.equipments">{{ car.total_price.equipments |
+                    currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="flex justify-between pe-2">
+
+                <li class="ps-1">
+                    Accessories:
+                </li>
+                <span *ngIf="car.total_price.accessories">{{ car.total_price.accessories
+                    | currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+
         </ul>
         <hr>
-        <p class="mx-1 font-light">
-            Total Price
-        </p>
+        <div class="flex justify-between pe-2">
+            <p class="mx-1 font-light">
+                Total Price
+            </p>
+            <span *ngIf="car.total_price.total">{{ car.total_price.total |
+                currency:'USD':'symbol':'1.0-2'}}</span>
+        </div>
     </div>
     <!--  -->
 
@@ -116,12 +149,12 @@
 
     <!-- EXTERIOR COLOR PERSONALIZATION CONTAINER -->
     <div class="container w-11/12 mx-auto flex py-12">
-        
+
         <!-- PERSONALIZED CAR SLIDESHOW + BUTTONS -->
         <div id="car-visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative">
                 <!-- CURRENT COLOR SLIDESHOW -->
-                <img [src]="car.pictures[currentIndex]" alt="" width="80%">
+                <img [src]="car.photos[currentIndex]" alt="" width="80%">
                 <!--  -->
                 <div class="flex">
                     <div id="left" (click)="slideLeftExterior()">
@@ -143,10 +176,11 @@
             <div class="text-center py-4">
                 <p class="text-xl font-semibold text-gray-800 text-jost">Colors</p>
             </div>
-        
+
             <div class="flex justify-center">
                 <ng-container *ngFor="let color of configuratorData.colors">
-                    <span id="colorchoice" class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1"
+                    <span id="colorchoice"
+                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1"
                         (click)="handleColorClick(color)">
                         <img [src]="color.photo" [alt]="color.name" [class.choosen]="selectedColor === color">
                         <p class="text-sm font-normal text-gray-800 text-jost py-2">{{color.name | titlecase}}</p>
@@ -155,7 +189,7 @@
                     </span>
                 </ng-container>
             </div>
-        
+
         </div>
         <!--  -->
     </div>
@@ -174,23 +208,26 @@
 
 <section id="rims" *ngIf="car && configuratorData">
     <hr>
+    <!-- SECTION HEADER -->
     <div class="w-100 text-center pt-10 my-14">
         <h1 class="text-3xl font-semibold text-gray-600 text-jost">Rims</h1>
     </div>
+    <!--  -->
 
+    <!-- EXTERIOR COLOR PERSONALIZATION CONTAINER -->
     <div class="container w-11/12 mx-auto flex py-12">
-
-
         <div class="w-1/3 flex flex-col items-center justify-start my-16">
             <div class="text-center py-4">
                 <p class="text-xl font-semibold text-gray-800 text-jost">Rims</p>
             </div>
 
+            <!-- DISPLAY RIM VARIATIONS -->
             <div class="flex justify-center">
                 <ng-container *ngFor="let rim of configuratorData.rims">
                     <span id="colorchoice"
-                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1">
-                        <img [src]="rim.photo" [alt]="rim.name">
+                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1"
+                        (click)="handleRimClick(rim)">
+                        <img [src]="rim.selection" [alt]="rim.name" [class.choosen]="selectedRim === rim">
                         <p class="text-sm font-normal text-gray-800 text-jost py-2">{{ rim.name | titlecase }}</p>
                         <p class="text-sm font-normal text-gray-800 text-jost">Cost: {{ rim.price |
                             currency:'USD':'symbol':'1.0-2' }}</p>
@@ -199,23 +236,23 @@
             </div>
 
         </div>
-
+        <!-- PERSONALIZED RIM SLIDESHOW + BUTTONS -->
         <div id="car-visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative flex justify-end">
-                <img *ngIf="car.initial_color.name === 'ice white'" [src]="getRimPhoto('ice white')" alt="" width="80%">
-                <img *ngIf="car.initial_color.name === 'blue abysse'" [src]="getRimPhoto('blue abysse')" alt="" width="80%">
-                <img *ngIf="car.initial_color.name === 'deep black metalic'" [src]="getRimPhoto('deep black metalic')" alt="" width="80%">
-              </div>
-
+                <img [src]="filteredRimPhoto[0].photo" [alt]="car.initial_rim.name" width="80%">
+            </div>
         </div>
     </div>
+    <!--  -->
 
+    <!-- PASS TO NEXT SECTION BUTTON -->
     <div class="container w-100 mx-auto text-center py-24">
         <button class="text-white font-bold py-2 px-4 w-48" [ngClass]="passToInterior ? 'bg-gray-400' : 'blue'"
             (click)="loadInteriorSection()" [attr.disabled]="passToInterior ? true : null">
             Next <i class="fa-solid fa-chevron-down text-sm"></i>
         </button>
     </div>
+    <!--  -->
 
 </section>
 
@@ -234,33 +271,31 @@
             </div>
 
             <div class="flex justify-center">
-                <!-- Use *ngFor to loop through the first three colors (colors[1], colors[2], colors[3]) -->
-                <ng-container *ngFor="let index of [1, 2, 3, 4]">
-                    <!-- Access the color object using the numeric index from the colors object -->
-                    <span id="colorchoice"
-                        class="px-1 cursor-pointer flex flex-col justify-center items-center m-1 pt-1">
-                        <!-- Assuming the images are defined in the colors objects, otherwise use different URLs -->
-                        <!-- <img [src]="interiorSelect[index].select" [alt]="interiorSelect[index].name"> -->
-                        <p class="text-sm font-normal text-gray-800 text-jost py-2">!!! INTERIOR SELECT NAME !!!</p>
-                        <p class="text-sm font-normal text-gray-800 text-jost">Cost: !!! INTERIOR SELECT PRICE !!!</p>
+                <ng-container *ngFor="let interior of configuratorData.interior">
+                    <span id="colorchoice" class="pe-1 cursor-pointer flex flex-col justify-center items-center pt-1"
+                        (click)="handleInteriorClick(interior)">
+                        <img [src]="interior.selection" [alt]="interior.name"
+                            [class.choosen]="selectedInterior === interior">
+                        <p class="text-sm font-normal text-gray-800 text-jost py-2">{{ interior.name | titlecase }}</p>
+                        <p class="text-sm font-normal text-gray-800 text-jost">Cost: {{ interior.price |
+                            currency:'USD':'symbol':'1.0-2' }}</p>
                     </span>
                 </ng-container>
             </div>
-
         </div>
 
         <div id="car-visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative flex justify-end">
-                <!-- <img [src]="interiorColorslides[currentIndex]" alt="" width="80%"> -->
+                <img [src]="car.initial_interior.photos[currentIndex]" alt="" width="80%">
 
                 <div class="flex">
-                    <div id="left-interior">
+                    <div id="left-interior" (click)="slideLeftInterior()">
                         <i class="fa-solid fa-angle-left"></i>
                     </div>
                     <div id="round-interior">
                         <img src="../../../assets/icons/image-360.png" alt="360" width="8%">
                     </div>
-                    <div id="right-interior">
+                    <div id="right-interior" (click)="slideRightInterior()">
                         <i class="fa-solid fa-angle-left fa-rotate-180"></i>
                     </div>
                 </div>
@@ -281,58 +316,57 @@
 </section>
 
 
-
 <section id="equipment" class="bg-slate-50" *ngIf="car && configuratorData">
     <hr>
 
     <div class="w-100 text-center pt-10 my-14">
         <h1 class="text-3xl font-semibold text-gray-600 text-jost">Equipments</h1>
-    </div>
-    <div class="container w-11/12 mx-auto flex py-12">
-
-        <ul class="flex flex-wrap w-full">
-            <li class="my-4 w-1/2 px-5">
-                <div
-                    class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg">
-                    <div class="block">
-                        <div class="w-full text-lg font-semibold flex justify-center">
-                            <!-- <img [src]="category.select" [alt]="category.name" class="w-[90%] mt-5"> -->
-                        </div>
-                        <div class="w-full">
-                            <div class="flex justify-center items-center">
-                                <h2 class="text-2xl py-3 text-playfair text-center text-black">!!! EQUIPMENT CATEGORY
-                                    NAME !!!</h2>
-                                <span class="px-2 cursor-pointer m-3">
-                                    <i class="fa-solid fa-chevron-down text-sm"></i>
-                                </span>
-                            </div>
-
-                            <!-- HERE GOES EQUIPMENTS -->
-                            <!-- <div *ngFor="let equipment of category.equipments"> -->
-                            <div
-                                class="flex justify-center items-center py-2 border border-gray-200 cursor-pointer my-2">
-                                <div class="w-1/3">
-                                    <span>
-                                        <!-- <img [src]="equipment.photo" alt="" width="75%"> -->
-                                    </span>
-                                </div>
-                                <div class="w-1/3 flex justify-center items-center">
-                                    <p class="text-xl py-3 text-lato text-center text-black">!!! EQUIPMENT NAME !!!</p>
-                                </div>
-                                <div class="w-1/3 flex justify-center items-center">
-                                    <span class="text-xl py-3 text-lato text-center text-black">Price: !!! EQUIPMENT
-                                        PRICE !!!</span>
-                                </div>
-                            </div>
-                            <!-- </div> -->
-
-                            <!-- END EQUIPMENTS -->
-
-                        </div>
-                    </div>
+      </div>
+      <div class="container w-11/12 mx-auto py-12">
+        <ul class="w-full flex flex-col flex-wrap my-2 justify-center md:flex-row sm:flex-row">
+          <li *ngFor="let key of equipmentKeys" class="w-full md:w-1/2 px-2 py-2">
+            <div class="w-full text-gray-500 bg-white border border-gray-200 rounded-xl mx-auto">
+              <div class="flex items-center justify-evenly">
+                <div class="w-1/2">
+                  <img [src]="equipmentCategoryPhotos[key]" alt="category" width="40%" class="w-full h-full">
                 </div>
-            </li>
+                <div 
+                (click)="toggleEquipmentList(key)"
+                class="w-1/2 flex items-center justify-center">
+                  <h2 class="text-2xl py-1 text-playfair text-center text-black cursor-pointer">{{ key | titlecase | removeUnderscore }}</h2>
+                  <span class="px-2 cursor-pointer">
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                  </span>
+                </div>
+              </div>
+      
+              <!-- HERE GOES EQUIPMENTS -->
+              <div *ngIf="equipmentListToggler[key]">
+                <div *ngFor="let equipment of configuratorData.equipments[key]"
+                  class="flex justify-between items-center py-2 border border-gray-200 cursor-pointer my-2 hover:bg-slate-100"
+                  [ngClass]="{ 'disabled-item': disabledStatus[equipment.id] }">
+                  <div class="w-1/3">
+                    <span>
+                      <img [src]="equipment.photo" [alt]="equipment.name" width="50%">
+                    </span>
+                  </div>
+                  <div class="w-1/3 flex justify-center items-center">
+                    <p class="text-xl py-3 text-lato text-center text-black">{{ equipment.name | titlecase }}</p>
+                  </div>
+                  <div class="w-1/3 flex justify-between items-center px-6">
+                    <span class="text-xl py-3 text-lato text-center text-black">Price: {{ equipment.price | currency:'USD':'symbol':'1.0-2' }}</span>
+      
+                    <span *ngIf="disabledStatus[equipment.id]" class="text-green-600 text-3xl">
+                      <i class="fa-solid fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END EQUIPMENTS -->
+          </li>
         </ul>
-    </div>
+      </div>
+      
 
 </section>
