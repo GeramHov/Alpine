@@ -3,11 +3,13 @@ import { Store } from '@ngrx/store';
 import { selectConfiguratorData } from 'src/app/reducer/alpine.reducer';
 import { ActivatedRoute } from '@angular/router';
 import ICar from 'src/app/model/car.model';
-import { afterSelection, selectColor, selectRim, selectInterior } from 'src/app/action/configurator.action';
+import { afterSelection, selectColor, selectRim, selectInterior, selectEquipment, selectAccessory } from 'src/app/action/configurator.action';
 import { IData } from 'src/app/data/alpine';
 import IColor from 'src/app/model/color.model';
 import IRim from 'src/app/model/rim.model';
 import IInterior from 'src/app/model/interior.model';
+import IEquipment from 'src/app/model/equipment.model';
+import IAccessory from 'src/app/model/accessory.model.ts';
 
 @Component({
   selector: 'app-build',
@@ -22,19 +24,26 @@ export class BuildComponent implements OnInit {
   selectedColor: IColor | null = null;
   selectedRim: IRim | null = null;
   selectedInterior: IInterior | null = null;
+  selectedEquipment: IEquipment | null = null;
+
   totalCard: boolean = false;
   passToExterior: boolean = false;
-  passToInterior: boolean = false;
   passToRims: boolean = false;
+  passToInterior: boolean = false;
   passToEquipment: boolean = false;
-  filteredRimPhoto: {color: string, photo: string}[] = [];
+  passToAccessories: boolean = false;
+
+  filteredRimPhoto: { color: string, photo: string }[] = [];
   equipmentKeys: string[] | undefined = undefined;
+  accessoryKeys: string[] | undefined = undefined;
 
   equipmentListToggler: { [key: string]: boolean } = {};
+  accessoryListToggler: { [key: string]: boolean } = {};
 
   interiorColorslides: Array<string> = [];
   rimPhoto: string = '';
-  disabledStatus: { [key: string]: boolean } = {};
+  disabledEquipmentStatus: { [key: string]: boolean } = {};
+  disabledAccesoryStatus: { [key: string]: boolean } = {};
 
   equipmentCategoryPhotos: { [key: string]: string } = {
     design: "../../../assets/images/configurateur/equipements/selection/design.jpg",
@@ -42,15 +51,21 @@ export class BuildComponent implements OnInit {
     comfort: "../../../assets/images/configurateur/equipements/selection/confort.jpg",
     drive: "../../../assets/images/configurateur/equipements/selection/conduite.jpg",
     security: "../../../assets/images/configurateur/equipements/selection/securite.jpg",
-    personalize_body: "../../../assets/images/configurateur/equipements/selection/perso-ext.jpg",
-    personalize_interior: "../../../assets/images/configurateur/equipements/selection/perso-int.jpg",
+    customize: "../../../assets/images/configurateur/equipements/selection/perso-int.jpg",
   };
+  accessoryCategoryPhotos: { [key: string]: string } = {
+    transport_and_protection: `<i class="fa-solid fa-hands-holding"></i>`,
+    multimedia: `<i class="fa-solid fa-compact-disc"></i>`,
+    garage_accessories: `<i class="fa-solid fa-screwdriver-wrench"></i>`,
+    interior: `<i class="fa-solid fa-puzzle-piece"></i>`,
+    exterior: `<i class="fa-solid fa-car"></i>`
+  }
 
   constructor(
     private store: Store<{ configurator: any }>,
     private renderer: Renderer2,
     private route: ActivatedRoute
-  ) { 
+  ) {
   }
 
   ngOnInit() {
@@ -63,55 +78,72 @@ export class BuildComponent implements OnInit {
     })
     // SUBSCRIBE TO STORE AND GETTING THE CURRENT VEHICLE DATA
     this.store.select((state) => state.configurator.selectedCar).subscribe((selectedCar) => {
-      
+
       this.car = selectedCar;
       this.getRimPhoto();
 
-      // console.log(this.car);
-
       this.equipmentKeys = Object.keys(this.configuratorData.equipments);
-      console.log(this.equipmentKeys);
 
-      this.disabledStatus = this.isEquipmentDisabled();
-      
-      
+      this.accessoryKeys = Object.keys(this.configuratorData.accessories);
 
+      this.disabledEquipmentStatus = this.isBasicEquipment();
+      this.disabledAccesoryStatus = this.hasAccessory();
     })
   }
 
-  isEquipmentDisabled(): { [key: number]: boolean } {
+  // FIND BASIC EQUIPMENTS
+  isBasicEquipment(): { [key: number]: boolean } {
     const disabledStatus: { [key: number]: boolean } = {};
-  
+
     for (const key of Object.keys(this.car.equipments)) {
       const carEquipments = this.car.equipments[key];
-  
+
       for (const equipment of carEquipments) {
         const equipmentId = equipment.id;
         const isOptionDisabled = this.configuratorData.equipments[key].some(
           (option) => option.id === equipmentId
         );
-  
         disabledStatus[equipmentId] = isOptionDisabled;
       }
     }
-  
+
+    return disabledStatus;
+  }
+
+  // FIND ADDED ACCESSORIES
+  hasAccessory(): {[key: number]: boolean}{
+    const disabledStatus: {[key: number]: boolean} = {};
+
+    for (const key of Object.keys(this.car.accessories)){
+      const carAccessories = this.car.accessories[key];
+
+      for (const accessory of carAccessories) {
+        const accessoryId = accessory.id;
+        const isOptionDisabled = this.configuratorData.accessories[key].some(
+          (option) => option.id === accessoryId
+        );
+        disabledStatus[accessoryId] = isOptionDisabled;
+      }
+    }
     return disabledStatus;
   }
 
   // FILTER RIM PHOTO
-  getRimPhoto(){
+  getRimPhoto() {
     this.filteredRimPhoto = this.car.initial_rim.photos.filter((photo) => photo.color === this.car.initial_color.name)
     return this.filteredRimPhoto;
   }
 
-  // PRICE CARD TOGGLE FUNCTION
+  // TOGGLER FUNCTION
   toggleTotalCard(): void {
     this.totalCard = !this.totalCard;
   }
-
-toggleEquipmentList(categoryKey: string): void {
-  this.equipmentListToggler[categoryKey] = !this.equipmentListToggler[categoryKey];
-}
+  toggleEquipmentList(categoryKey: string): void {
+    this.equipmentListToggler[categoryKey] = !this.equipmentListToggler[categoryKey];
+  }
+  toggleAccessoryList(categoryKey: string): void {
+    this.accessoryListToggler[categoryKey] = !this.accessoryListToggler[categoryKey];
+  }
 
   // LOADER FUNCTIONS
   loadExteriorSection(): void {
@@ -123,15 +155,6 @@ toggleEquipmentList(categoryKey: string): void {
       exteriorSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  loadInteriorSection(): void {
-    this.passToInterior = true;
-    const interiorSection = document.getElementById('interior');
-
-    if (interiorSection) {
-      this.renderer.setStyle(interiorSection, 'display', 'block');
-      interiorSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
   loadRimsSection(): void {
     this.passToRims = true;
     const rimsSection = document.getElementById('rims');
@@ -141,13 +164,30 @@ toggleEquipmentList(categoryKey: string): void {
       rimsSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
+  loadInteriorSection(): void {
+    this.passToInterior = true;
+    const interiorSection = document.getElementById('interior');
+
+    if (interiorSection) {
+      this.renderer.setStyle(interiorSection, 'display', 'block');
+      interiorSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
   loadEquipmentSection(): void {
     this.passToEquipment = true;
-    const equipmentSection = document.getElementById('equipment');
+    const equipmentSection = document.getElementById('equipments');
 
     if (equipmentSection) {
       this.renderer.setStyle(equipmentSection, 'display', 'block');
       equipmentSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  loadAccessoriesSection(): void {
+    this.passToAccessories = true;
+    const accessoriesSection = document.getElementById('accessories');
+    if(accessoriesSection){
+      this.renderer.setStyle(accessoriesSection, 'display', 'block');
+      accessoriesSection.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -168,6 +208,14 @@ toggleEquipmentList(categoryKey: string): void {
     this.store.dispatch(selectInterior({ interior }))
 
     // console.log('Clicked Interior:', interior);
+  }
+  handleEquipmentClick(key: string, equipment: IEquipment) {
+    this.store.dispatch(selectEquipment({ key, equipment }));
+    // console.log('Clicked Equipment:', key, equipment);
+  }
+  handleAccessoryClick(key: string, accessory: IAccessory) {
+    this.store.dispatch(selectAccessory({ key, accessory }));
+    console.log('Clicked Equipment:', key, accessory);
   }
 
   //SLIDER FUNCTIONS

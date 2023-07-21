@@ -2,13 +2,15 @@
   <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
     <div class="sm:flex sm:items-center sm:justify-between">
       <div class="flex justify-center items-center">
-        <a href="#" id="footer-logo" class="px-4">
+        <button 
+        (click)="scrollToTop()"
+        id="footer-logo" class="px-4">
           <img src="../../../assets/icons/logo.png" alt="alpine-logo" />
-        </a>
-        <a href="#" id="footer-logo-renault" class="ps-2 pe-1">
+        </button>
+        <a href="https://www.renault.fr/" target="_blank" id="footer-logo-renault" class="ps-2 pe-1">
           <img src="../../../assets/icons/renault.png" alt="alpine-logo" />
         </a>
-        <span class="flex">
+        <span class="flex cursor-default">
           <p class="px-1">Powered By Renault</p>
           &copy;
         </span>

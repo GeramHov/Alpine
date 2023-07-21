@@ -11,6 +11,8 @@ import { RemoveUnderscorePipe } from './components/pipe/remove.underscore.pipe';
 
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer/alpine.reducer';
+import { SummaryComponent } from './components/summary/summary.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { reducer } from './reducer/alpine.reducer';
     BuildComponent,
     PrebuildComponent,
     RemoveUnderscorePipe,
+    SummaryComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

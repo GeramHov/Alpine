@@ -7,8 +7,14 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   disclaimer: boolean = false;
+  alpineBtn!: HTMLElement | null;
 
-  toggleDisclaimer() : void{
+  toggleDisclaimer(): void {
     this.disclaimer = !this.disclaimer;
   }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 }

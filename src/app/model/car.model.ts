@@ -1,4 +1,4 @@
-import IAccessoire from "./accessoire.model";
+import IAccessoire from "./accessory.model.ts";
 import IColor from "./color.model";
 import IEquipment from "./equipment.model";
 import IRim from "./rim.model";
@@ -19,7 +19,7 @@ export default interface ICar {
     [key: string]: IEquipment[]
   };
 
-  accessoires: {
+  accessories: {
     [key: string]: IAccessoire[]
   };
   total_price: ITotal

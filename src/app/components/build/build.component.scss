@@ -3,10 +3,16 @@ $lato: "Lato", sans-serif;
 $jost: "Jost", sans-serif;
 $playfair: "Playfair Display", serif;
 
+// DISPLAY CLASSES
 .text-playfair {
     font-family: $playfair;
 }
-
+.text-lato {
+    font-family: $lato;
+}
+.text-jost {
+    font-family: $jost;
+}
 .blue {
     background-color: $blueAlpine;
 
@@ -15,43 +21,64 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease-in;
     }
 }
+.success {
+    background-color: $blueAlpine;
 
-#overview{
-    background-image: url('../../../assets/background/35320318_hmn11.jpg');
-    background-size: cover;
+    &:hover {
+        background-color: #14b8a6;
+        transition: 0.2s ease-in;
+    }
 }
-
-.text-lato {
-    font-family: $lato;
+.alpine-icon{
+    color: $blueAlpine;
 }
-
-.text-jost {
-    font-family: $jost;
-}
-
-#exterior {
-    background-image: url('../../../assets/background/qw15.jpg');
-    background-size: cover;
-    // display: none;
-}
-
-#interior {
-    background-image: url('../../../assets/background/33780883_gpt9.jpg');
-    background-size: cover;
-    // display: none;
-}
-
 .choosen {
     border: 4px solid $blueAlpine;
     transform: scale(1.05);
     filter: brightness(150%);
     transition: 0.2s ease;
 }
+.disabled-item {
+    opacity: 0.6;
+    pointer-events: none;
+}
 
 #total-card {
     z-index: 2;
 }
 
+#overview{
+    background-image: url('../../../assets/background/35320318_hmn11.jpg');
+    background-size: cover;
+}
+
+#exterior {
+    background-image: url('../../../assets/background/qw15.jpg');
+    background-size: cover;
+    display: none;
+}
+
+#rims{
+    background-image: url(../../../assets/background/34345000_qet6.jpg);
+    background-size: cover;
+    display: none;
+}
+
+#interior {
+    background-image: url('../../../assets/background/33780883_gpt9.jpg');
+    background-size: cover;
+    display: none;
+}
+
+#equipments{
+    display: none;
+}
+
+#accessories{
+    display: none;
+}
+
+// SLIDESHOW BUTTONS
 #left {
     position: absolute;
     bottom: 25px;
@@ -70,7 +97,6 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease;
     }
 }
-
 #left-interior{
     position: absolute;
     bottom: 25px;
@@ -89,7 +115,6 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease;
     }
 }
-
 #right-interior{
     position: absolute;
     bottom: 25px;
@@ -108,19 +133,16 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease;
     }
 }
-
 #round-interior{
     position: absolute;
     bottom: 30px;
     left: 60%;
 }
-
 #round {
     position: absolute;
     bottom: 25px;
     left: 40%;
 }
-
 #right {
 
     position: absolute;
@@ -140,15 +162,4 @@ $playfair: "Playfair Display", serif;
     &:not(:hover) {
         transition: 0.2s ease;
     }
-}
-
-#rims{
-    background-image: url(../../../assets/background/34345000_qet6.jpg);
-    background-size: cover;
-    // display: none;
-}
-
-.disabled-item {
-    opacity: 0.6; /* Example: You can set the desired style for disabled items */
-    pointer-events: none; /* This prevents click events on disabled items */
 }

@@ -1,0 +1,84 @@
+<div class="w-100 pt-3 flex justify-center items-center">
+    <img src="../../../assets/icons/pngwing.com_1.png" alt="" width="15%">
+</div>
+
+<div id="car-visual" class="w-full flex flex-col justify-center mx-auto">
+  <div 
+  class="mx-auto">
+      <!-- CURRENT COLOR SLIDESHOW -->
+      <div class="relative flex justify-center items-center">
+        <h1 class="text-4xl font-bold text-gray-600 text-jost absolute top-5 cursor-default">{{ car.version.name | uppercase }} Edition</h1>
+        <img [src]="car.photos[currentIndex]" alt="" >
+        <div class="absolute lg:bottom-32 md:bottom-0 sm:bottom-0 flex justify-center">
+            <div id="left" class="flex items-center px-3 cursor-pointer"
+            (click)="slideLeftExterior()"
+            >
+                <i class="fa-solid fa-angle-left text-2xl"></i>
+            </div>
+                <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
+            <div id="right" class="flex items-center px-3 cursor-pointer"
+            (click)="slideRightExterior()"
+            >
+                <i class="fa-solid fa-angle-left fa-rotate-180 text-2xl"></i>
+            </div>
+        </div>
+      </div>
+      <!--  -->
+  </div>
+</div>
+<hr>
+<div class="container mx-auto text-center flex justify-center my-12">
+  <div class="w-1/4 text-center">
+    <p class="text-playfair text-slate-900 text-2xl">Customized</p>
+  </div>
+</div>
+
+<div class="container mx-auto flex justify-between px-36 items-center my-4">
+  <div class="w-1/5 flex justify-center">
+    <p class="text-playfair text-slate-900 text-xl">{{ car.initial_color.name | titlecase }} Color</p>
+  </div>
+  <div class="w-1/5 flex justify-center">
+    <img [src]="car.initial_color.photo" alt="" width="40%">
+  </div>
+  <div class="w-1/5 flex justify-center">
+    <p class="text-jost text-slate-900 text-xl">{{ car.initial_color.price | currency:'USD':'symbol':'1.0-2'}}</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="container mx-auto flex justify-between px-36 items-center my-4">
+  <div class="w-1/5 flex justify-center">
+    <p class="text-playfair text-slate-900 text-xl">{{ car.initial_rim.name | titlecase }} Rims</p>
+  </div>
+  <div class="w-1/5 flex justify-center">
+    <img [src]="car.initial_rim" alt="" width="40%">
+  </div>
+  <div class="w-1/5 flex justify-center">
+    <p class="text-jost text-slate-900 text-xl">{{ car.initial_rim.price | currency:'USD':'symbol':'1.0-2'}}</p>
+  </div>
+</div>
+
+<div id="car-visual" class="w-full flex flex-col justify-center mx-auto bg-slate-950 my-10">
+  <div 
+  class="mx-auto">
+      <!-- CURRENT COLOR SLIDESHOW -->
+      <div class="relative flex justify-center items-center">
+        <img [src]="car.initial_interior.photos[currentIndex]" alt=""  >
+        <div class="absolute lg:bottom-32 md:bottom-0 sm:bottom-0 flex justify-center">
+            <div id="left" class="flex items-center px-3 cursor-pointer"
+            (click)="slideLeftExterior()"
+            >
+                <i class="fa-solid fa-angle-left text-3xl text-slate-300"></i>
+            </div>
+                <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
+            <div id="right" class="flex items-center px-3 cursor-pointer"
+            (click)="slideRightExterior()"
+            >
+                <i class="fa-solid fa-angle-left fa-rotate-180 text-3xl text-slate-300"></i>
+            </div>
+        </div>
+      </div>
+      <!--  -->
+  </div>
+</div>

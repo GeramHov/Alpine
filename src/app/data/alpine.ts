@@ -1,4 +1,4 @@
-import IAccessoire from "../model/accessoire.model";
+import IAccessory from "../model/accessory.model.ts";
 import ICar from "../model/car.model";
 import IColor from "../model/color.model";
 import IEquipment from "../model/equipment.model";
@@ -13,8 +13,8 @@ export interface IData {
   equipments: {
     [key: string]: IEquipment[]
   },
-  accessoires: {
-    [key: string]: IAccessoire[]
+  accessories: {
+    [key: string]: IAccessory[]
   },
   photos: Array<{ name: string, color: string, rim: string, list: Array<string> }>
 }
@@ -94,6 +94,7 @@ const DATA: IData = {
             price: 0,
           },
         ],
+        design:[],
         comfort: [
           {
             id: 7,
@@ -101,15 +102,10 @@ const DATA: IData = {
             photo: "../assets/images/configurateur/equipements/categories/confort/retro-int-electrochrome.jpg",
             price: 0,
           },
+
         ],
         drive: [
-          {
-            id: 8,
-            name: "cruise control & speed limiter",
-            photo:
-              "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
-            price: 0,
-          },
+
         ],
         security: [
           {
@@ -127,15 +123,13 @@ const DATA: IData = {
             price: 0,
           },
         ],
-        personalize_body: [
+        customize: [
           {
             id: 18,
             name: "anthracite brake calipers",
             photo: '../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
             price: 0,
           },
-        ],
-        personalize_interior: [
           {
             id: 21,
             name: "harmony carbon mat",
@@ -143,14 +137,14 @@ const DATA: IData = {
               "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
             price: 0,
           },
-        ]
+        ],
       },
-      accessoires: {
-        Transport_et_protection: [],
+      accessories: {
+        transport_and_protection: [],
         multimedia: [],
-        Intérieur: [],
-        Exterieur: [],
-        Matériel_de_garage: [],
+        garage_accessories: [],
+        interior: [],
+        exterior: [],
       },
       total_price: {
         initial_price: 62500,
@@ -250,8 +244,8 @@ const DATA: IData = {
         ],
         drive: [
           {
-            id: 6,
-            name: "cruise control & speed limiter",
+            id: 8,
+            name: "cruise control",
             photo:
               "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
             price: 0,
@@ -273,15 +267,13 @@ const DATA: IData = {
             price: 0,
           },
         ],
-        personalize_body: [
+        customize: [
           {
             id: 13,
             name: "anthracite brake calipers",
             photo: '../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-gris.jpg',
             price: 0,
           },
-        ],
-        personalize_interior: [
           {
             id: 15,
             name: "harmony carbon mat",
@@ -289,14 +281,14 @@ const DATA: IData = {
               "../assets/images/configurateur/equipements/categories/personnalisation interieure/pack-carbone.jpg",
             price: 0,
           },
-        ]
+        ],
       },
-      accessoires: {
-        Transport_et_protection: [],
+      accessories: {
+        transport_and_protection: [],
         multimedia: [],
-        Intérieur: [],
-        Exterieur: [],
-        Matériel_de_garage: [],
+        garage_accessories: [],
+        interior: [],
+        exterior: [],
       },
       total_price: {
         initial_price: 62500,
@@ -504,10 +496,10 @@ const DATA: IData = {
       },
       {
         id: 8,
-        name: "cruise control & speed limiter",
+        name: "cruise control",
         photo:
           "../assets/images/configurateur/equipements/categories/confort/regul-limit-vitesse.jpg",
-        price: 0,
+        price: 304,
       },
       {
         id: 9,
@@ -542,7 +534,7 @@ const DATA: IData = {
       },
       {
         id: 13,
-        name: "front & rear parctronic with rear-view camera",
+        name: "parctronic with rear-view camera",
         photo:
           "../assets/images/configurateur/equipements/categories/conduite/camera-recul.jpg",
         price: 1200,
@@ -578,7 +570,7 @@ const DATA: IData = {
         price: 1000,
       },
     ],
-    personalize_body: [
+    customize: [
       {
         id: 18,
         name: "anthracite brake calipers",
@@ -600,9 +592,6 @@ const DATA: IData = {
           "../assets/images/configurateur/equipements/categories/personnalisation exterieure/etrier-bleu.jpg",
         price: 384,
       },
-
-    ],
-    personalize_interior: [
       {
         id: 21,
         name: "harmony carbon mat",
@@ -632,107 +621,107 @@ const DATA: IData = {
           "../assets/images/configurateur/equipements/categories/personnalisation interieure/siege-chauffant.jpg",
         price: 400,
       },
-    ]
+    ],
   },
-  accessoires: {
-    Transport_et_protection: [
+  accessories: {
+    transport_and_protection: [
       {
         id: 1,
-        name: "Extincteur 1kg",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/extincteur.jpg",
-        price: 22,
+        name: "fixation for fire extinguisher",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/fixation-extincteur.jpg",
+        price: 29,
       },
       {
         id: 2,
-        name: "Chaine Premium Grip",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/chaaine-neige.jpg",
-        price: 336,
+        name: "OBD port protection",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/protection-obd.jpg",
+        price: 29,
       },
       {
         id: 3,
-        name: "Alpine Alarme",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/alarme.jpg",
-        price: 543,
+        name: "Fire extinguisher 1kg",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/extincteur.jpg",
+        price: 39,
       },
       {
         id: 4,
-        name: "Protection Prise OBD",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/protection-obd.jpg",
-        price: 99,
+        name: "premium grip snow chains",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/chaaine-neige.jpg",
+        price: 59,
       },
       {
         id: 5,
-        name: "Kit de sécurité",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/kit-securite.jpg",
-        price: 20,
+        name: "security kit",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/kit-securite.jpg",
+        price: 59,
       },
       {
         id: 6,
-        name: "Fixation extincteur",
-        picture: "../assets/images/configurateur/accessoires/transport et protection/fixation-extincteur.jpg",
-        price: 72,
+        name: "alpine alarm",
+        photo: "../assets/images/configurateur/accessoires/transport et protection/alarme.jpg",
+        price: 399,
       },
     ],
     multimedia: [
       {
         id: 7,
-        name: "Support caméra sport",
-        picture: "../assets/images/configurateur/accessoires/multimedia/support-camera.jpg",
-        price: 89,
+        name: "magnetic smartphone holder",
+        photo: "../assets/images/configurateur/accessoires/multimedia/support-smartphone.jpg",
+        price: 29,
       },
       {
         id: 8,
-        name: "Support smartphone magnétique",
-        picture: "../assets/images/configurateur/accessoires/multimedia/support-smartphone.jpg",
-        price: 21,
+        name: "sport camera holder",
+        photo: "../assets/images/configurateur/accessoires/multimedia/support-camera.jpg",
+        price: 79,
       },
     ],
-    Intérieur: [
+    garage_accessories: [
+      {
+        id: 11,
+        name: "battery charger",
+        photo: "../assets/images/configurateur/accessoires/garage/chargeur-batterie.jpg",
+        price: 249,
+      },
+      {
+        id: 12,
+        name: "alpine tool kit",
+        photo: "../assets/images/configurateur/accessoires/garage/kit-outils.jpg",
+        price: 399,
+      },
+    ],
+    interior: [
       {
         id: 9,
-        name: "Tapis de coffre",
-        picture: "../assets/images/configurateur/accessoires/interieur/tapis-coffre.jpg",
+        name: "trunk floor mat",
+        photo: "../assets/images/configurateur/accessoires/interieur/tapis-coffre.jpg",
         price: 59,
       },
       {
         id: 10,
-        name: "Filet de rangement - Horizontal",
-        picture: "../assets/images/configurateur/accessoires/interieur/filet-rangement.jpg",
+        name: "storage net",
+        photo: "../assets/images/configurateur/accessoires/interieur/filet-rangement.jpg",
         price: 59,
       },
     ],
-    Matériel_de_garage: [
-      {
-        id: 11,
-        name: "Chargeur batterie",
-        picture: "../assets/images/configurateur/accessoires/garage/chargeur-batterie.jpg",
-        price: 240,
-      },
-      {
-        id: 12,
-        name: "Kit Outils Alpine",
-        picture: "../assets/images/configurateur/accessoires/garage/kit-outils.jpg",
-        price: 398,
-      },
-    ],
-    Exterieur: [
+    exterior: [
       {
         id: 13,
-        name: "Cabochons Alpine - Métalisés",
-        picture: "../assets/images/configurateur/accessoires/exterieur/antivol-jantes.jpg",
-        price: 24,
+        name: "metalic rim locks",
+        photo: "../assets/images/configurateur/accessoires/exterieur/antivol-jantes.jpg",
+        price: 29,
       },
       {
         id: 14,
-        name: "Housse de protection Alpine",
-        picture: "../assets/images/configurateur/accessoires/exterieur/housse.jpg",
-        price: 216,
+        name: "black rim locks",
+        photo: "../assets/images/configurateur/accessoires/exterieur/cabochons-metal.jpg",
+        price: 49,
       },
       {
         id: 15,
-        name: "Antivols pour jante - Noirs",
-        picture: "../assets/images/configurateur/accessoires/exterieur/cabochons-metal.jpg",
-        price: 51,
+        name: "alpine protective cover",
+        photo: "../assets/images/configurateur/accessoires/exterieur/housse.jpg",
+        price: 199,
       },
     ],
   },
