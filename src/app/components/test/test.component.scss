@@ -12,3 +12,35 @@ $playfair: "Playfair Display", serif;
 .text-jost {
   font-family: $jost;
 }
+.blue {
+  background-color: $blueAlpine;
+
+  &:hover {
+      background-color: #6366f1;
+      transition: 0.2s ease-in;
+  }
+}
+
+@media (max-width: 767px) {
+  .list{
+    padding-inline: 4px;
+    justify-content:space-around;
+
+    .list-name{
+      width: 40vw;
+
+      p{
+        font-size: 16px;
+      }
+    }
+  }
+
+  #price-list{
+    width: 50vw;
+    
+    span{
+      font-size: 18px;
+    }
+  }
+  
+}

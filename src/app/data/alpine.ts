@@ -56,14 +56,14 @@ const DATA: IData = {
         ],
       },
       initial_interior: {
-        name: "black dynamica",
-        price: 600,
-        option: "A110 Pure",
-        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
+        name: "black leather",
+        price: 0,
+        option: "A110 Legend",
+        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
         photos: [
-          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-1.jpg",
-          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-2.jpg",
-          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-3.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-1.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-2.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir-3.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
@@ -193,14 +193,14 @@ const DATA: IData = {
         ],
       },
       initial_interior: {
-        name: "black leather",
-        price: 0,
-        option: "A110 Legend",
-        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir.jpg",
+        name: "black dynamica",
+        price: 600,
+        option: "A110 Pure",
+        selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_dinamica.jpg",
         photos: [
-          "../assets/images/configurateur/interieurs/vues/cuir-noir-1.jpg",
-          "../assets/images/configurateur/interieurs/vues/cuir-noir-2.jpg",
-          "../assets/images/configurateur/interieurs/vues/cuir-noir-3.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-1.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-2.jpg",
+          "../assets/images/configurateur/interieurs/vues/cuir-noir_dinamica-3.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-1.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-2.jpg",
           "../assets/images/configurateur/interieurs/vues-avant/cockpit-3.jpg",
@@ -291,17 +291,19 @@ const DATA: IData = {
         exterior: [],
       },
       total_price: {
-        initial_price: 62500,
+        initial_price: 72500,
         exterior: 0,
         rims: 0,
         interior: 0,
         equipments: 0,
         accessories: 0,
-        total: 62500
+        total: 72500
       }
     },
   ],
-  //choix des améliorations voitures
+  
+  // CUSTOM FEATURES
+  
   colors: [
     {
       name: "ice white",
@@ -363,7 +365,7 @@ const DATA: IData = {
       ]
     },
     {
-      name: "perforated leather",
+      name: "perfored leather",
       price: 800,
       option: "A110 Pure",
       selection: "../assets/images/configurateur/interieurs/selection/cuir-noir_perfore.jpg",

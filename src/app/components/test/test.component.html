@@ -1,84 +1,257 @@
 <div class="w-100 pt-3 flex justify-center items-center">
-    <img src="../../../assets/icons/pngwing.com_1.png" alt="" width="15%">
+  <img src="../../../assets/icons/pngwing.com_1.png" alt="" width="15%">
 </div>
 
-<div id="car-visual" class="w-full flex flex-col justify-center mx-auto">
-  <div 
-  class="mx-auto">
-      <!-- CURRENT COLOR SLIDESHOW -->
-      <div class="relative flex justify-center items-center">
-        <h1 class="text-4xl font-bold text-gray-600 text-jost absolute top-5 cursor-default">{{ car.version.name | uppercase }} Edition</h1>
-        <img [src]="car.photos[currentIndex]" alt="" >
-        <div class="absolute lg:bottom-32 md:bottom-0 sm:bottom-0 flex justify-center">
-            <div id="left" class="flex items-center px-3 cursor-pointer"
-            (click)="slideLeftExterior()"
-            >
-                <i class="fa-solid fa-angle-left text-2xl"></i>
-            </div>
-                <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
-            <div id="right" class="flex items-center px-3 cursor-pointer"
-            (click)="slideRightExterior()"
-            >
-                <i class="fa-solid fa-angle-left fa-rotate-180 text-2xl"></i>
-            </div>
+<div id="car-exterior" class="w-full flex flex-col justify-center mx-auto">
+  <div class="mx-auto">
+    <!-- CURRENT COLOR SLIDESHOW -->
+    <div class="relative flex flex-col justify-center items-center">
+      <h1 class="lg:text-4xl font-bold text-gray-600 text-jost absolute top-5 cursor-default md:text-3xl">{{ car.version.name |
+        uppercase }} Edition</h1>
+      <img [src]="car.photos[currentIndex]" alt="">
+      <div class="lg:absolute lg:bottom-32 md:static flex justify-center">
+        <div id="left" class="flex items-center px-3 cursor-pointer" (click)="slideLeftExterior()">
+          <i class="fa-solid fa-angle-left text-2xl"></i>
+        </div>
+        <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
+        <div id="right" class="flex items-center px-3 cursor-pointer" (click)="slideRightExterior()">
+          <i class="fa-solid fa-angle-left fa-rotate-180 text-2xl"></i>
         </div>
       </div>
-      <!--  -->
+    </div>
+    <!--  -->
   </div>
 </div>
+
+<div id="car-rims" class="w-full flex flex-col justify-center mx-auto py-5">
+  <div class="mx-auto">
+    <!-- CURRENT COLOR SLIDESHOW -->
+    <div class="relative flex justify-center items-center">
+      <img [src]="filteredRimPhoto[0].photo" [alt]="car.initial_rim.name">
+    </div>
+    <!--  -->
+  </div>
+</div>
+
+<div id="car-interior" class="w-full flex flex-col justify-center mx-auto bg-slate-950 my-10">
+  <div class="mx-auto">
+    <!-- CURRENT COLOR SLIDESHOW -->
+    <div class="lg:relative flex flex-col justify-center items-center">
+      <img [src]="car.initial_interior.photos[currentIndex]" [alt]="car.initial_interior.name">
+      <div class="lg:absolute lg:bottom-8 md:static flex justify-center">
+        <div id="left" class="flex items-center px-3 cursor-pointer" (click)="slideLeftExterior()">
+          <i class="fa-solid fa-angle-left text-3xl text-slate-300"></i>
+        </div>
+        <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
+        <div id="right" class="flex items-center px-3 cursor-pointer" (click)="slideRightExterior()">
+          <i class="fa-solid fa-angle-left fa-rotate-180 text-3xl text-slate-300"></i>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+  </div>
+</div>
+
 <hr>
+
 <div class="container mx-auto text-center flex justify-center my-12">
   <div class="w-1/4 text-center">
     <p class="text-playfair text-slate-900 text-2xl">Customized</p>
   </div>
 </div>
+<hr>
 
-<div class="container mx-auto flex justify-between px-36 items-center my-4">
-  <div class="w-1/5 flex justify-center">
-    <p class="text-playfair text-slate-900 text-xl">{{ car.initial_color.name | titlecase }} Color</p>
+<div class="list container mx-auto flex justify-between px-36 items-center my-4">
+  <div class="list-name w-1/4 flex justify-start">
+    <p class="text-playfair text-slate-900 text-2xl">{{ car.initial_color.name | titlecase }} Color</p>
   </div>
   <div class="w-1/5 flex justify-center">
-    <img [src]="car.initial_color.photo" alt="" width="40%">
+    <img [src]="car.initial_color.photo" alt="" width="60%">
   </div>
-  <div class="w-1/5 flex justify-center">
-    <p class="text-jost text-slate-900 text-xl">{{ car.initial_color.price | currency:'USD':'symbol':'1.0-2'}}</p>
+  <div class="w-1/5 flex justify-center items-center">
+    <p *ngIf="car.initial_color.price" class="text-jost text-slate-900 lg:text-xl md:text-sm">{{ car.initial_color.price | currency:'USD':'symbol':'1.0-2'}}</p>
+    <p *ngIf="!car.initial_color.price" class="text-playfair text-slate-900 lg:text-xl md:text-sm">Basic</p>
+    <span *ngIf="!car.initial_color.price" class="text-green-600 ps-4">
+      <i class="fa-solid fa-check"></i>
+    </span>
   </div>
 </div>
 
 <hr>
 
-<div class="container mx-auto flex justify-between px-36 items-center my-4">
-  <div class="w-1/5 flex justify-center">
-    <p class="text-playfair text-slate-900 text-xl">{{ car.initial_rim.name | titlecase }} Rims</p>
+<div class="list container mx-auto flex justify-between px-36 items-center my-4">
+  <div class="list-name w-1/4 flex justify-start">
+    <p class="text-playfair text-slate-900 text-2xl">{{ car.initial_rim.name | titlecase }} Rims</p>
   </div>
   <div class="w-1/5 flex justify-center">
-    <img [src]="car.initial_rim" alt="" width="40%">
+    <img [src]="car.initial_rim.selection" alt="" width="60%">
   </div>
   <div class="w-1/5 flex justify-center">
-    <p class="text-jost text-slate-900 text-xl">{{ car.initial_rim.price | currency:'USD':'symbol':'1.0-2'}}</p>
+    <p *ngIf="car.initial_rim.price" class="text-jost text-slate-900 lg:text-xl md:text-sm">{{ car.initial_rim.price | currency:'USD':'symbol':'1.0-2'}}</p>
+    <p *ngIf="!car.initial_rim.price" class="text-playfair text-slate-900 lg:text-xl md:text-sm">Basic</p>
+    <span *ngIf="!car.initial_rim.price" class="text-green-600 ps-4">
+      <i class="fa-solid fa-check"></i>
+    </span>
   </div>
 </div>
 
-<div id="car-visual" class="w-full flex flex-col justify-center mx-auto bg-slate-950 my-10">
-  <div 
-  class="mx-auto">
-      <!-- CURRENT COLOR SLIDESHOW -->
-      <div class="relative flex justify-center items-center">
-        <img [src]="car.initial_interior.photos[currentIndex]" alt=""  >
-        <div class="absolute lg:bottom-32 md:bottom-0 sm:bottom-0 flex justify-center">
-            <div id="left" class="flex items-center px-3 cursor-pointer"
-            (click)="slideLeftExterior()"
-            >
-                <i class="fa-solid fa-angle-left text-3xl text-slate-300"></i>
-            </div>
-                <img src="../../../assets/icons/image-360.png" alt="360" width="10%">
-            <div id="right" class="flex items-center px-3 cursor-pointer"
-            (click)="slideRightExterior()"
-            >
-                <i class="fa-solid fa-angle-left fa-rotate-180 text-3xl text-slate-300"></i>
-            </div>
-        </div>
-      </div>
-      <!--  -->
+<hr>
+
+<div class="list container mx-auto flex justify-between px-36 items-center my-4">
+  <div class="list-name w-1/4 flex justify-start">
+    <p class="text-playfair text-slate-900 text-2xl">{{ car.initial_interior.name | titlecase }} Interior</p>
   </div>
+  <div class="w-1/5 flex justify-center">
+    <img [src]="car.initial_interior.selection" [alt]="car.initial_interior.name" width="60%">
+  </div>
+  <div class="w-1/5 flex justify-center">
+    <p class="text-jost text-slate-900 lg:text-xl sm:text-sm">{{ car.initial_interior.price | currency:'USD':'symbol':'1.0-2'}}</p>
+    <p *ngIf="!car.initial_interior.price" class="text-playfair text-slate-900 lg:text-xl md:text-sm">Basic</p>
+    <span *ngIf="!car.initial_interior.price" class="text-green-600 ps-4">
+      <i class="fa-solid fa-check"></i>
+    </span>
+  </div>
+</div>
+
+<hr>
+
+<div class="container mx-auto text-center flex justify-center my-12">
+  <div class="lg:w-1/4 md:w-full text-center">
+    <p class="text-playfair text-slate-900 text-2xl">Equipments and Accessories</p>
+  </div>
+</div>
+<hr>
+
+<div id="equipment-list" *ngFor="let category of car.equipments | keyvalue">
+
+  <div class="list container mx-auto flex justify-between px-36 items-center mt-4" *ngFor="let equipment of category.value">
+
+    <div class="list-name w-1/4 flex justify-start">
+      <p class="text-playfair text-slate-900 text-xl">{{ equipment.name | titlecase }}</p>
+    </div>
+    <div class="w-1/5 flex justify-center">
+      <img [src]="equipment.photo" [alt]="equipment.name" width="60%">
+    </div>
+    <div class="w-1/5 flex justify-center">
+      <p *ngIf="equipment.price !== 0" class="text-jost text-slate-900 text-xl">{{ equipment.price |
+        currency:'USD':'symbol':'1.0-2'}}</p>
+      <p *ngIf="equipment.price == 0" class="text-playfair text-slate-900 lg:text-xl md:text-sm">Basic</p>
+      <span *ngIf="equipment.price == 0" class="text-green-600 ps-4">
+        <i class="fa-solid fa-check"></i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="accessory-list" *ngFor="let category of car.accessories | keyvalue">
+  <div class="list container mx-auto flex justify-between px-36 items-center mt-4" *ngFor="let accessory of category.value">
+
+    <div class="list-name w-1/4 flex justify-start">
+      <p class="text-playfair text-slate-900 text-xl">{{ accessory.name | titlecase }}</p>
+    </div>
+    <div class="w-1/5 flex justify-center">
+      <img [src]="accessory.photo" [alt]="accessory.name" width="60%">
+    </div>
+    <div class="w-1/5 flex justify-center">
+      <p *ngIf="accessory.price !== 0" class="text-jost text-slate-900 text-xl">{{ accessory.price |
+        currency:'USD':'symbol':'1.0-2'}}</p>
+      <p *ngIf="accessory.price == 0" class="text-playfair text-slate-900 lg:text-xl md:text-sm">Basic</p>
+      <span *ngIf="accessory.price == 0" class="text-green-600 ps-4">
+        <i class="fa-solid fa-check"></i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container mx-auto text-center flex justify-center my-12">
+  <div class="w-1/4 text-center">
+    <p class="text-playfair text-slate-900 text-2xl">Price</p>
+  </div>
+</div>
+<hr>
+
+<div id="price-list" class="w-1/4 flex flex-col mx-auto py-6">
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      Basic Vehicle
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.initial_price | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      Color
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.exterior | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      Rims
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.rims | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      Interior
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.interior | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      Equipments
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.equipments | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between pb-4">
+    <p class="text-playfair text-xl">
+      Accessories
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.accessories | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <hr>
+  <div class="flex justify-between pt-4">
+    <p class="text-playfair text-xl">
+      Net Price
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.total * 0.8 | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between">
+    <p class="text-playfair text-xl">
+      VAT (20%)
+    </p>
+    <span class="text-jost text-xl">
+      {{ car.total_price.total * 0.2 | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+  <div class="flex justify-between py-5">
+    <p class="text-playfair text-2xl">
+      Total
+    </p>
+    <span class="text-jost text-2xl">
+      {{ car.total_price.total | currency:'USD':'symbol':'1.0-2'}}
+    </span>
+  </div>
+</div>
+
+<div class="container w-100 mx-auto text-center pt-16 pb-4">
+  <button class="text-white font-semibold py-2 px-4 blue w-80 h-14 text-center text-xl my-3" 
+      routerLink="">
+      Reserve
+  </button> <br>
+  <span class="cursor-pointer hover:underline">Abandon</span>
 </div>

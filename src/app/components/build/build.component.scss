@@ -29,7 +29,7 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease-in;
     }
 }
-.alpine-icon{
+.alpine-icon {
     color: $blueAlpine;
 }
 .choosen {
@@ -42,124 +42,157 @@ $playfair: "Playfair Display", serif;
     opacity: 0.6;
     pointer-events: none;
 }
+////////////////////
 
+// SECTIONS
 #total-card {
     z-index: 2;
 }
-
-#overview{
+#overview {
     background-image: url('../../../assets/background/35320318_hmn11.jpg');
     background-size: cover;
 }
-
 #exterior {
     background-image: url('../../../assets/background/qw15.jpg');
     background-size: cover;
     display: none;
 }
-
-#rims{
+#rims {
     background-image: url(../../../assets/background/34345000_qet6.jpg);
     background-size: cover;
     display: none;
 }
-
 #interior {
     background-image: url('../../../assets/background/33780883_gpt9.jpg');
     background-size: cover;
     display: none;
 }
-
 #equipments{
     display: none;
 }
-
 #accessories{
     display: none;
 }
+////////////////////
 
 // SLIDESHOW BUTTONS
-#left {
+#slider-btn {
     position: absolute;
     bottom: 25px;
-    left: 36%;
-    color: black;
-    font-size: 2rem;
-    cursor: pointer;
-    filter: opacity(0.2);
+    left: 35%;
 
-    &:hover {
-        filter: opacity(1);
-        transition: 0.2s ease;
+    #left {
+        color: black;
+        font-size: 2rem;
+        cursor: pointer;
+        filter: opacity(0.2);
+
+        &:hover {
+            filter: opacity(1);
+            transition: 0.2s ease;
+        }
+
+        &:not(:hover) {
+            transition: 0.2s ease;
+        }
     }
 
-    &:not(:hover) {
-        transition: 0.2s ease;
+    #right {
+        color: black;
+        font-size: 2rem;
+        cursor: pointer;
+        filter: opacity(0.2);
+
+        &:hover {
+            filter: opacity(1);
+            transition: 0.2s ease;
+        }
+
+        &:not(:hover) {
+            transition: 0.2s ease;
+        }
     }
 }
-#left-interior{
+#slider-btn-interior {
     position: absolute;
     bottom: 25px;
-    left: 55%;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    filter: opacity(0.5);
+    left: 57%;
 
-    &:hover {
-        filter: opacity(1);
-        transition: 0.2s ease;
+    #left-interior {
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        filter: opacity(0.5);
+
+        &:hover {
+            filter: opacity(1);
+            transition: 0.2s ease;
+        }
+
+        &:not(:hover) {
+            transition: 0.2s ease;
+        }
     }
 
-    &:not(:hover) {
-        transition: 0.2s ease;
+    #right-interior {
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        filter: opacity(0.5);
+
+        &:hover {
+            filter: opacity(1);
+            transition: 0.2s ease;
+        }
+
+        &:not(:hover) {
+            transition: 0.2s ease;
+        }
     }
 }
-#right-interior{
-    position: absolute;
-    bottom: 25px;
-    right: 32%;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    filter: opacity(0.5);
+////////////////////
 
-    &:hover {
-        filter: opacity(1);
-        transition: 0.2s ease;
+// MEDIA QUERY
+@media (max-width: 767px) {
+    .wrap-column {
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 0px;
+        margin: auto;
+
+        #visual {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto !important;
+
+            #slider-btn {
+                bottom: 10px;
+                left: 45%;
+            }
+
+            #slider-btn-interior {
+                bottom: 10px;
+                left: 45%;
+            }
+
+            img#photo {
+                width: 100%;
+            }
+        }
+
+        #custom {
+            width: 100%;
+        }
     }
 
-    &:not(:hover) {
-        transition: 0.2s ease;
-    }
-}
-#round-interior{
-    position: absolute;
-    bottom: 30px;
-    left: 60%;
-}
-#round {
-    position: absolute;
-    bottom: 25px;
-    left: 40%;
-}
-#right {
+    #addbtn {
+        margin: 0;
 
-    position: absolute;
-    right: 52%;
-
-    bottom: 25px;
-    color: black;
-    font-size: 2rem;
-    cursor: pointer;
-    filter: opacity(0.2);
-
-    &:hover {
-        filter: opacity(1);
-        transition: 0.2s ease;
     }
 
-    &:not(:hover) {
-        transition: 0.2s ease;
+    #accessory-description {
+        width: 100%;
     }
 }

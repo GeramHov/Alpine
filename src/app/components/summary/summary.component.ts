@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import ICar from 'src/app/model/car.model';
-import { IData } from 'src/app/data/alpine';
 import { Store } from '@ngrx/store';
-import { Carousel, initTE } from 'tw-elements'
 
 @Component({
   selector: 'app-summary',
@@ -10,22 +8,21 @@ import { Carousel, initTE } from 'tw-elements'
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  configuratorData!: IData;
-  car!: ICar;
 
-  constructor(private store: Store<{ configurator: any }>){}
+  car!: ICar 
+  filteredRimPhoto: { color: string, photo: string }[] = [];
+  currentIndex: number = 0;
+
+  constructor(private store: Store<{ configurator: any }>,) {
+
+  }
 
   ngOnInit(): void {
-
-    initTE({ Carousel });
-
+    window.scrollTo(0, 0);
     this.store.select((state) => state.configurator.selectedCar).subscribe((selectedCar) => {
 
       this.car = selectedCar;
-
-      console.log(this.car);
-      
-      // this.getRimPhoto();
+      this.getRimPhoto();
 
       // this.equipmentKeys = Object.keys(this.configuratorData.equipments);
 
@@ -33,6 +30,29 @@ export class SummaryComponent implements OnInit {
 
       // this.disabledEquipmentStatus = this.isBasicEquipment();
       // this.disabledAccesoryStatus = this.hasAccessory();
+      console.log(this.car);
     })
+
   }
-}
+
+  getRimPhoto() {
+    this.filteredRimPhoto = this.car.initial_rim.photos.filter((photo) => photo.color === this.car.initial_color.name)
+    return this.filteredRimPhoto;
+  }
+
+  slideLeftExterior(): void {
+    if ((this.currentIndex - 1) < 0) {
+      this.currentIndex = this.car.photos.length - 1;
+    } else {
+      this.currentIndex = this.currentIndex - 1;
+    }
+  }
+  slideRightExterior(): void {
+    if (this.currentIndex + 1 === this.car.photos.length) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex = this.currentIndex + 1;
+    }
+  }
+
+  }

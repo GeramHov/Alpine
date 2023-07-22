@@ -54,12 +54,14 @@
           </a>
         </li>
         <li class="nav-item flex" [ngClass]="{ 'ps-4': !showMenu, '': showMenu }">
-          <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+          <button 
+          routerLink="/dealer"
+          class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
             href="#">
             <span [ngClass]="{ '': !showMenu, hidden: showMenu }" class="px-2"><i
                 class="fa-solid fa-location-dot text-white"></i></span>
             <span class="ml-2">Find a Dealer</span>
-          </a>
+            </button>
         </li>
         <li *ngIf="showMenu" class="ms-4 py-2">
           <hr />

@@ -142,6 +142,7 @@ export class TestComponent implements OnInit{
       total: 62500
     }
   }
+  filteredRimPhoto: { color: string, photo: string }[] = [];
 
   currentIndex: number = 0;
 
@@ -151,7 +152,13 @@ export class TestComponent implements OnInit{
 
   ngOnInit(): void {
     console.log(this.car);
+    this.getRimPhoto();
 
+  }
+
+  getRimPhoto() {
+    this.filteredRimPhoto = this.car.initial_rim.photos.filter((photo) => photo.color === this.car.initial_color.name)
+    return this.filteredRimPhoto;
   }
 
   slideLeftExterior(): void {

@@ -94,7 +94,7 @@
     <div id="resume"
         class=" w-5/6 m-auto mt-28 grid grid-col-1 gap-x-3 gap-y-10 md:grid-cols-2 max-w-6xl items-center px-4">
         <div class="py-3 px-2">
-            <div class="flex mt-2">
+            <div id="main-parts" class="flex mt-2">
                 <h1 class="text-3xl mb-2 text-playfair">Engine</h1>
             </div>
             <p class="text-playfair text-xl">
@@ -108,7 +108,7 @@
             </div>
             <hr>
 
-            <div class="flex mt-4">
+            <div id="main-parts" class="flex mt-4">
                 <h1 class="text-3xl mb-2 text-playfair">Transmission</h1>
             </div>
             <p class="text-playfair text-xl">
@@ -148,22 +148,20 @@
     <!--  -->
 
     <!-- EXTERIOR COLOR PERSONALIZATION CONTAINER -->
-    <div class="container w-11/12 mx-auto flex py-12">
+    <div class="wrap-column container w-11/12 mx-auto flex py-12">
 
         <!-- PERSONALIZED CAR SLIDESHOW + BUTTONS -->
-        <div id="car-visual" class="w-2/3 flex flex-col justify-center">
+        <div id="visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative">
                 <!-- CURRENT COLOR SLIDESHOW -->
-                <img [src]="car.photos[currentIndex]" alt="" width="80%">
+                <img id="photo" [src]="car.photos[currentIndex]" [alt]="car.version.name" width="80%">
                 <!--  -->
-                <div class="flex">
-                    <div id="left" (click)="slideLeftExterior()">
+                <div id="slider-btn" class="flex items-center">
+                    <div id="left" class="px-2" (click)="slideLeftExterior()">
                         <i class="fa-solid fa-angle-left"></i>
                     </div>
-                    <div id="round">
-                        <img src="../../../assets/icons/image-360.png" alt="360" width="8%">
-                    </div>
-                    <div id="right" (click)="slideRightExterior()">
+                        <img id="round" src="../../../assets/icons/image-360.png" alt="360" width="8%">
+                    <div id="right" class="px-2" (click)="slideRightExterior()">
                         <i class="fa-solid fa-angle-left fa-rotate-180"></i>
                     </div>
                 </div>
@@ -172,7 +170,7 @@
         <!--  -->
 
         <!-- DISPLAY COLOR VARIATIONS -->
-        <div class="w-1/3 flex flex-col items-center justify-start my-16">
+        <div id="custom" class="w-1/3 flex flex-col items-center justify-start my-16">
             <div class="text-center py-4">
                 <p class="text-xl font-semibold text-gray-800 text-jost">Colors</p>
             </div>
@@ -215,8 +213,8 @@
     <!--  -->
 
     <!-- RIM PERSONALIZATION CONTAINER -->
-    <div class="container w-11/12 mx-auto flex py-12">
-        <div class="w-1/3 flex flex-col items-center justify-start my-16">
+    <div class="wrap-column container w-11/12 mx-auto flex py-12">
+        <div id="custom" class="w-1/3 flex flex-col items-center justify-start my-16">
             <div class="text-center py-4">
                 <p class="text-xl font-semibold text-gray-800 text-jost">Rims</p>
             </div>
@@ -237,9 +235,9 @@
 
         </div>
         <!-- PERSONALIZED RIM SLIDESHOW + BUTTONS -->
-        <div id="car-visual" class="w-2/3 flex flex-col justify-center">
+        <div id="visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative flex justify-end">
-                <img [src]="filteredRimPhoto[0].photo" [alt]="car.initial_rim.name" width="80%">
+                <img id="photo" [src]="filteredRimPhoto[0].photo" [alt]="car.initial_rim.name" width="80%">
             </div>
         </div>
     </div>
@@ -265,10 +263,10 @@
     <!--  -->
 
     <!-- EXTERIOR COLOR PERSONALIZATION CONTAINER -->
-    <div class="container w-11/12 mx-auto flex py-12">
+    <div class="wrap-column container w-11/12 mx-auto flex py-12">
 
         <!-- DISPLAY INTERIOR VARIATIONS -->
-        <div class="w-1/3 flex flex-col items-center justify-start my-16">
+        <div id="custom" class="w-1/3 flex flex-col items-center justify-start my-16">
             <div class="text-center py-4">
                 <p class="text-xl font-semibold text-gray-800 text-jost">Interior</p>
             </div>
@@ -289,17 +287,15 @@
         <!--  -->
 
         <!-- CUSTOMIZED INTERIOR + SLIDESHOW -->
-        <div id="car-visual" class="w-2/3 flex flex-col justify-center">
+        <div id="visual" class="w-2/3 flex flex-col justify-center">
             <div class="relative flex justify-end">
-                <img [src]="car.initial_interior.photos[currentIndex]" alt="" width="80%">
+                <img id="photo" [src]="car.initial_interior.photos[currentIndex]" [alt]="car.initial_interior.name" width="80%">
 
-                <div class="flex">
+                <div id="slider-btn-interior" class="flex items-center">
                     <div id="left-interior" (click)="slideLeftInterior()">
                         <i class="fa-solid fa-angle-left"></i>
                     </div>
-                    <div id="round-interior">
-                        <img src="../../../assets/icons/image-360.png" alt="360" width="8%">
-                    </div>
+                        <img id="round-interior" src="../../../assets/icons/image-360.png" alt="360" width="8%">
                     <div id="right-interior" (click)="slideRightInterior()">
                         <i class="fa-solid fa-angle-left fa-rotate-180"></i>
                     </div>
@@ -369,7 +365,7 @@
                                         | currency:'USD':'symbol':'1.0-2' }}</span> </span>
 
                                 <div>
-                                    <button *ngIf="!disabledEquipmentStatus[equipment.id]"
+                                    <button id="addbtn" *ngIf="!disabledEquipmentStatus[equipment.id]"
                                         (click)="handleEquipmentClick(key, equipment)"
                                         class="success text-white font-medium py-2 px-4 me-6 lato">
                                         Add
@@ -413,7 +409,7 @@
             <li *ngFor="let key of accessoryKeys" class="w-full px-2 py-2">
                 <div class="w-full text-gray-500 bg-white border border-gray-200 rounded-sm mx-auto py-5">
                     <div class="flex items-center justify-evenly">
-                        <div (click)="toggleAccessoryList(key)" class="w-1/2 flex items-center justify-center">
+                        <div id="accessory-description" (click)="toggleAccessoryList(key)" class="w-1/2 flex items-center justify-center">
                             <div class="alpine-icon text-black px-4 text-2xl" [innerHtml]="accessoryCategoryPhotos[key]">
                                 <span>{{ key }}</span>
                             </div>
@@ -447,7 +443,7 @@
                                         | currency:'USD':'symbol':'1.0-2' }}</span> </span>
 
                                 <div>
-                                    <button *ngIf="!disabledAccesoryStatus[accessory.id]"
+                                    <button id="addbtn" *ngIf="!disabledAccesoryStatus[accessory.id]"
                                         (click)="handleAccessoryClick(key, accessory)"
                                         class="success text-white font-medium py-2 px-4 me-6 lato">
                                         Add

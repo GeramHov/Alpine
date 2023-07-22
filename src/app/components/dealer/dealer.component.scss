@@ -1,0 +1,56 @@
+$blueAlpine: #245e97;
+$lato: "Lato", sans-serif;
+$jost: "Jost", sans-serif;
+$playfair: "Playfair Display", serif;
+
+#main{
+    height: 100vh;
+}
+
+.text-playfair {
+    font-family: $playfair;
+}
+.text-lato {
+    font-family: $lato;
+}
+.text-jost {
+    font-family: $jost;
+}
+.blue {
+    background-color: $blueAlpine;
+
+    &:hover {
+        background-color: #6366f1;
+        transition: 0.2s ease-in;
+    }
+}
+.success {
+    background-color: $blueAlpine;
+
+    &:hover {
+        background-color: #14b8a6;
+        transition: 0.2s ease-in;
+    }
+}
+
+@media (max-width: 1280px) {
+    #dealer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        #map{
+            overflow-x: hidden;
+        }
+    }
+}
+
+@media (max-width: 870px) {
+    #dealer{
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        #map{
+            overflow-x: hidden;
+        }
+    }
+}

@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer/alpine.reducer';
 import { SummaryComponent } from './components/summary/summary.component';
 import { TestComponent } from './components/test/test.component';
+import { DealerComponent } from './components/dealer/dealer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TestComponent } from './components/test/test.component';
     RemoveUnderscorePipe,
     SummaryComponent,
     TestComponent,
+    DealerComponent,
   ],
   imports: [
     BrowserModule,

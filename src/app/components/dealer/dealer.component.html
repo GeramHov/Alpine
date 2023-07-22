@@ -1,0 +1,77 @@
+<section id="main">
+    <div 
+    *ngIf="villefranche"
+    id="dealer" class="container mx-auto flex">
+        <div id="map" class="w-1/2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d709784.1402045434!2d3.511626378125004!3d45.9793621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4853677daaaab%3A0xd0b46c5e55016cc0!2sCentre%20Alpine%20Villefranche-Sur-Sa%C3%B4ne!5e0!3m2!1sen!2sfr!4v1689938091443!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="info" class="w-1/2 flex flex-col justify-center items-center">
+            <p class="text-jost text-3xl font-semibold text-slate-600 mt-5">Nearest Dealer to Your Location</p>
+            <span class="mb-5">(99 kms)</span>
+            <p class="py-2 text-lg">
+                Centre Alpine Villefranche-Sur-Saône</p>
+            <p class="py-2 text-lg">1057 Av. Edouard Herriot, 69400 Villefranche-sur-Saône</p>
+            <p class="cursor-pointer text-lg py-2"><span class="px-2"><i class="fa-solid fa-phone"></i></span> 0474063110</p>
+
+                <button class="text-white font-semibold py-2 px-4 blue w-64 h-14 text-center text-xl my-8" 
+                routerLink="/dealer">
+                Order Here
+            </button>
+        </div>
+    </div>
+
+    <div 
+    *ngIf="clermont"
+    id="dealer" class="container mx-auto flex">
+        <div id="map" class="w-1/2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d356161.73013538425!2d2.5232887890625078!3d45.780939000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f71c26857a1a9b%3A0x370870582cc1371d!2sCentre%20Alpine%20Clermont-Ferrand!5e0!3m2!1sen!2sfr!4v1689940292777!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="info" class="w-1/2 flex flex-col justify-center items-center">
+            <p class="text-jost text-3xl font-semibold text-slate-600 mt-5">Near to Your Location</p>
+            <span class="mb-5">(120 kms)</span>
+            <p class="py-2 text-lg">
+                Centre Alpine Clermont-Ferrand</p>
+            <p class="py-2 text-lg">4 Rue Louis Blériot, 63000 Clérmont-Ferrand</p>
+            <p class="cursor-pointer text-lg py-2"><span class="px-2"><i class="fa-solid fa-phone"></i></span> 0473427500</p>
+
+                <button class="text-white font-semibold py-2 px-4 blue w-64 h-14 text-center text-xl my-8" 
+                routerLink="/dealer">
+                Order Here
+            </button>
+        </div>
+    </div>
+
+    <div
+    *ngIf="valence"
+    id="dealer" class="container mx-auto flex">
+        <div id="map" class="w-1/2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d361612.63310176186!2d4.324909889062493!3d44.9213284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f557ef2bec3527%3A0x2339eca1fbca068e!2sCENTRE%20ALPINE%20VALENCE!5e0!3m2!1sen!2sfr!4v1689940385671!5m2!1sen!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="info" class="w-1/2 flex flex-col justify-center items-center">
+            <p class="text-jost text-3xl font-semibold text-slate-600 mt-5">Near to Your Location</p>
+            <span class="mb-5">(206 kms)</span>
+            <p class="py-2 text-lg">
+                Centre Alpine Valence</p>
+            <p class="py-2 text-lg">5 Rue Maurice René Simonet, 26000 Valence</p>
+            <p class="cursor-pointer text-lg py-2"><span class="px-2"><i class="fa-solid fa-phone"></i></span> 0475790150</p>
+
+                <button class="text-white font-semibold py-2 px-4 blue w-64 h-14 text-center text-xl my-8" 
+                routerLink="/dealer">
+                Order Here
+            </button>
+        </div>
+    </div>
+
+    <div class="container mx-auto my-5 text-center flex justify-center flex-col">
+        <p class="text-jost text-2xl font-semibold text-slate-600 mt-5 mb-4">Other Dealers</p>
+        <button 
+        (click)="toggleVillefrancheMainAddress()"
+        *ngIf="!villefranche" class="text-slate-700 py-2 hover:underline">Centre Alpine Villefranche-Sur-Saône, 1057 Av. Edouard Herriot, 69400 Villefranche-sur-Saône, France</button>
+        <button 
+        (click)="toggleClermontMainAddress()"
+        *ngIf="!clermont" class="text-slate-700 py-2 hover:underline">Centre Alpine Clermont-Ferrand, 4 Rue Louis Blériot, 63000 Clérmont-Ferrand, France</button>
+        <button
+        (click)="toggleValencetMainAddress()"
+        *ngIf="!valence" class="text-slate-700 pb-2 hover:underline">Centre Alpine Valence, 5 Rue Maurice René Simonet, 26000 Valence, France</button>
+    </div>
+</section>

@@ -5,6 +5,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PrebuildComponent } from './components/prebuild/prebuild.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { TestComponent } from './components/test/test.component';
+import { DealerComponent } from './components/dealer/dealer.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -12,14 +13,13 @@ const routes: Routes = [
   { path: 'build', component: BuildComponent },
   { path: 'summary', component: SummaryComponent },
   { path: 'test', component: TestComponent },
-  
+  { path: 'dealer', component: DealerComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'disabled', // Add this option
-    anchorScrolling: 'disabled', // Optional: Disable anchor scrolling as well
-    scrollOffset: [0, 0], // Optional: Define a scroll offset if needed
+    scrollPositionRestoration: 'disabled', 
+    anchorScrolling: 'disabled',
+    scrollOffset: [0, 0],
   }),],
   exports: [RouterModule],
 })

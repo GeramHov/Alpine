@@ -62,6 +62,7 @@ export class PrebuildComponent implements OnInit {
   constructor(private store: Store<{ configurator: any }>, private router : Router) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.store.select(selectConfiguratorData).subscribe((data) => {
       this.configuratorData = data;
       // console.log('Configurator Data:', this.configuratorData);
@@ -83,7 +84,6 @@ export class PrebuildComponent implements OnInit {
     this.store.dispatch(selectCar({ car }))
     this.router.navigate(["build"])
   }
-  
 
   slideRight(): void {
     this.clicked = true;

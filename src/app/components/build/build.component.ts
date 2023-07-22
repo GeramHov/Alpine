@@ -36,14 +36,13 @@ export class BuildComponent implements OnInit {
   filteredRimPhoto: { color: string, photo: string }[] = [];
   equipmentKeys: string[] | undefined = undefined;
   accessoryKeys: string[] | undefined = undefined;
-
-  equipmentListToggler: { [key: string]: boolean } = {};
-  accessoryListToggler: { [key: string]: boolean } = {};
-
   interiorColorslides: Array<string> = [];
   rimPhoto: string = '';
   disabledEquipmentStatus: { [key: string]: boolean } = {};
   disabledAccesoryStatus: { [key: string]: boolean } = {};
+
+  equipmentListToggler: { [key: string]: boolean } = {};
+  accessoryListToggler: { [key: string]: boolean } = {};
 
   equipmentCategoryPhotos: { [key: string]: string } = {
     design: "../../../assets/images/configurateur/equipements/selection/design.jpg",
