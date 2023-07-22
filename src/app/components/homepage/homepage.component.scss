@@ -3,427 +3,481 @@ $lato: "Lato", sans-serif;
 $jost: "Jost", sans-serif;
 $playfair: "Playfair Display", serif;
 
-.bg-car{
-  background-image:url('../../../assets/images/homepage/galerie/A110_LEGENDE_5.jpg');
- filter: brightness(0.9);
- background-position: center;
- background-size: cover;
+.bg-car {
+    background-image: url('../../../assets/images/homepage/galerie/A110_LEGENDE_5.jpg');
+    filter: brightness(0.9);
+    background-position: center;
+    background-size: cover;
 
 }
 
-#card-video{
-  position: absolute;
+#card-video {
+    position: absolute;
 }
 
-.bg-lights{
- background-image: url('../../../assets/images/homepage/A110/Alpine-A110-1.jpg');
- filter: brightness(0.6);
- background-position: center;
- background-size: cover;
+.bg-lights {
+    background-image: url('../../../assets/images/homepage/A110/Alpine-A110-1.jpg');
+    filter: brightness(0.6);
+    background-position: center;
+    background-size: cover;
 }
 
-@keyframes show{
- from{
-   opacity:0;
- }
- to{
-   opacity:100%
- }
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%
+    }
 }
 
-.text-playfair{
-  font-family: $playfair;
+.text-playfair {
+    font-family: $playfair;
 }
 
-.blue{
-  background-color: #6366f1;
+.blue {
+    background-color: #6366f1;
 
-  &:hover{
-    background-color: $blueAlpine;
-    transition: 0.2s ease-in;
-  }
+    &:hover {
+        background-color: $blueAlpine;
+        transition: 0.2s ease-in;
+    }
 }
 
-.lato{
-  font-family: $lato;
+.lato {
+    font-family: $lato;
 }
 
 @media (max-width: 720px) {
-  #card{
-    margin: 10px;
-  }
-  #card-video{
-    margin: 20px;
-  }
-  .bg-video__content{
-    height: 45vh;
-    background-color: black;
-  }
+    #card {
+        margin: 10px;
+    }
+
+    #card-video {
+        margin: 20px;
+    }
+
+    .bg-video__content {
+        height: 45vh;
+        background-color: black;
+    }
 }
 
 #tools {
-  h1 {
-      font-family: $jost;
-  }
+    h1 {
+        font-family: $jost;
+    }
 
-  #card-1 {
-      background-image: url(../../../assets/images/homepage/galerie/A110_PURE_8.jpg);
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
+    #card-1 {
+        background-image: url(../../../assets/images/homepage/galerie/A110_PURE_8.jpg);
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
 
-      &:hover {
-          animation: zoom 1.5s ;
-      }
-
-
-      @keyframes zoom {
-          0% {
-              background-size: 300%;
-          }
-          5% {
-              background-size: 310%;
-          }
-          10% {
-              background-size: 320%;
-          }
-          15% {
-              background-size: 330%;
-          }
-          20% {
-              background-size: 340%;
-          }
-          25% {
-              background-size: 350%;
-          }
-          30% {
-              background-size: 360%;
-          }
-          35% {
-              background-size: 370%;
-          }
-          40% {
-              background-size: 380%;
-          }
-          45% {
-              background-size: 390%;
-          }
-          50% {
-              background-size: 400%;
-          }
-
-          55% {
-              background-size: 410%;
-          }
-
-          60% {
-              background-size: 420%;
-          }
-
-          65% {
-              background-size: 430%;
-          }
-
-          70% {
-              background-size: 440%;
-          }
-
-          75% {
-              background-size: 450%;
-          }
-
-          80% {
-              background-size: 460%;
-          }
-
-          85% {
-              background-size: 470%;
-          }
-
-          90% {
-              background-size: 480%;
-          }
-
-          95% {
-              background-size: 490%;
-          }
-
-          100% {
-              background-size: 500%;
-          }
-
-      }
-  }
-
-  #card-2 {
-      background-image: url(../../../assets/images/homepage/interieur/interieur_desktop.png);
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
-
-      &:hover {
-          animation: zoom 1.5s;
-      }
+        &:hover {
+            animation: zoom 1.5s;
+        }
 
 
-      @keyframes zoom {
-          0% {
-              background-size: 300%;
-          }
-          5% {
-              background-size: 310%;
-          }
-          10% {
-              background-size: 320%;
-          }
-          15% {
-              background-size: 330%;
-          }
-          20% {
-              background-size: 340%;
-          }
-          25% {
-              background-size: 350%;
-          }
-          30% {
-              background-size: 360%;
-          }
-          35% {
-              background-size: 370%;
-          }
-          40% {
-              background-size: 380%;
-          }
-          45% {
-              background-size: 390%;
-          }
-          50% {
-              background-size: 400%;
-          }
+        @keyframes zoom {
+            0% {
+                background-size: 300%;
+            }
 
-          55% {
-              background-size: 410%;
-          }
+            5% {
+                background-size: 310%;
+            }
 
-          60% {
-              background-size: 420%;
-          }
+            10% {
+                background-size: 320%;
+            }
 
-          65% {
-              background-size: 430%;
-          }
+            15% {
+                background-size: 330%;
+            }
 
-          70% {
-              background-size: 440%;
-          }
+            20% {
+                background-size: 340%;
+            }
 
-          75% {
-              background-size: 450%;
-          }
+            25% {
+                background-size: 350%;
+            }
 
-          80% {
-              background-size: 460%;
-          }
+            30% {
+                background-size: 360%;
+            }
 
-          85% {
-              background-size: 470%;
-          }
+            35% {
+                background-size: 370%;
+            }
 
-          90% {
-              background-size: 480%;
-          }
+            40% {
+                background-size: 380%;
+            }
 
-          95% {
-              background-size: 490%;
-          }
+            45% {
+                background-size: 390%;
+            }
 
-          100% {
-              background-size: 500%;
-          }
+            50% {
+                background-size: 400%;
+            }
 
-      }
-  }
+            55% {
+                background-size: 410%;
+            }
 
-  #card-3 {
-      background-image: url(../../../assets/images/homepage/galerie/A110_PURE_4.jpg);
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
+            60% {
+                background-size: 420%;
+            }
 
-      &:hover {
-          animation: zoom 1.5s;
-      }
+            65% {
+                background-size: 430%;
+            }
 
+            70% {
+                background-size: 440%;
+            }
 
-      @keyframes zoom {
-          0% {
-              background-size: 300%;
-          }
-          5% {
-              background-size: 310%;
-          }
-          10% {
-              background-size: 320%;
-          }
-          15% {
-              background-size: 330%;
-          }
-          20% {
-              background-size: 340%;
-          }
-          25% {
-              background-size: 350%;
-          }
-          30% {
-              background-size: 360%;
-          }
-          35% {
-              background-size: 370%;
-          }
-          40% {
-              background-size: 380%;
-          }
-          45% {
-              background-size: 390%;
-          }
-          50% {
-              background-size: 400%;
-          }
+            75% {
+                background-size: 450%;
+            }
 
-          55% {
-              background-size: 410%;
-          }
+            80% {
+                background-size: 460%;
+            }
 
-          60% {
-              background-size: 420%;
-          }
+            85% {
+                background-size: 470%;
+            }
 
-          65% {
-              background-size: 430%;
-          }
+            90% {
+                background-size: 480%;
+            }
 
-          70% {
-              background-size: 440%;
-          }
+            95% {
+                background-size: 490%;
+            }
 
-          75% {
-              background-size: 450%;
-          }
+            100% {
+                background-size: 500%;
+            }
 
-          80% {
-              background-size: 460%;
-          }
+        }
+    }
 
-          85% {
-              background-size: 470%;
-          }
+    #card-2 {
+        background-image: url(../../../assets/images/homepage/interieur/interieur_desktop.png);
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
 
-          90% {
-              background-size: 480%;
-          }
-
-          95% {
-              background-size: 490%;
-          }
-
-          100% {
-              background-size: 500%;
-          }
-
-      }
-  }
-
-  #card-4 {
-      background-image: url(../../../assets/images/homepage/technologie/disque_frein_desktop.jpg);
-      background-position: center;
-      background-size: cover;
-      overflow: hidden;
-
-      &:hover {
-          animation: zoom 1.5s;
-      }
+        &:hover {
+            animation: zoom 1.5s;
+        }
 
 
-      @keyframes zoom {
-          0% {
-              background-size: 300%;
-          }
-          5% {
-              background-size: 310%;
-          }
-          10% {
-              background-size: 320%;
-          }
-          15% {
-              background-size: 330%;
-          }
-          20% {
-              background-size: 340%;
-          }
-          25% {
-              background-size: 350%;
-          }
-          30% {
-              background-size: 360%;
-          }
-          35% {
-              background-size: 370%;
-          }
-          40% {
-              background-size: 380%;
-          }
-          45% {
-              background-size: 390%;
-          }
-          50% {
-              background-size: 400%;
-          }
+        @keyframes zoom {
+            0% {
+                background-size: 300%;
+            }
 
-          55% {
-              background-size: 410%;
-          }
+            5% {
+                background-size: 310%;
+            }
 
-          60% {
-              background-size: 420%;
-          }
+            10% {
+                background-size: 320%;
+            }
 
-          65% {
-              background-size: 430%;
-          }
+            15% {
+                background-size: 330%;
+            }
 
-          70% {
-              background-size: 440%;
-          }
+            20% {
+                background-size: 340%;
+            }
 
-          75% {
-              background-size: 450%;
-          }
+            25% {
+                background-size: 350%;
+            }
 
-          80% {
-              background-size: 460%;
-          }
+            30% {
+                background-size: 360%;
+            }
 
-          85% {
-              background-size: 470%;
-          }
+            35% {
+                background-size: 370%;
+            }
 
-          90% {
-              background-size: 480%;
-          }
+            40% {
+                background-size: 380%;
+            }
 
-          95% {
-              background-size: 490%;
-          }
+            45% {
+                background-size: 390%;
+            }
 
-          100% {
-              background-size: 500%;
-          }
+            50% {
+                background-size: 400%;
+            }
 
-      }
-  }
+            55% {
+                background-size: 410%;
+            }
 
-  a {
-      font-family: $lato;
-  }
+            60% {
+                background-size: 420%;
+            }
+
+            65% {
+                background-size: 430%;
+            }
+
+            70% {
+                background-size: 440%;
+            }
+
+            75% {
+                background-size: 450%;
+            }
+
+            80% {
+                background-size: 460%;
+            }
+
+            85% {
+                background-size: 470%;
+            }
+
+            90% {
+                background-size: 480%;
+            }
+
+            95% {
+                background-size: 490%;
+            }
+
+            100% {
+                background-size: 500%;
+            }
+
+        }
+    }
+
+    #card-3 {
+        background-image: url(../../../assets/images/homepage/galerie/A110_PURE_4.jpg);
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+
+        &:hover {
+            animation: zoom 1.5s;
+        }
+
+
+        @keyframes zoom {
+            0% {
+                background-size: 300%;
+            }
+
+            5% {
+                background-size: 310%;
+            }
+
+            10% {
+                background-size: 320%;
+            }
+
+            15% {
+                background-size: 330%;
+            }
+
+            20% {
+                background-size: 340%;
+            }
+
+            25% {
+                background-size: 350%;
+            }
+
+            30% {
+                background-size: 360%;
+            }
+
+            35% {
+                background-size: 370%;
+            }
+
+            40% {
+                background-size: 380%;
+            }
+
+            45% {
+                background-size: 390%;
+            }
+
+            50% {
+                background-size: 400%;
+            }
+
+            55% {
+                background-size: 410%;
+            }
+
+            60% {
+                background-size: 420%;
+            }
+
+            65% {
+                background-size: 430%;
+            }
+
+            70% {
+                background-size: 440%;
+            }
+
+            75% {
+                background-size: 450%;
+            }
+
+            80% {
+                background-size: 460%;
+            }
+
+            85% {
+                background-size: 470%;
+            }
+
+            90% {
+                background-size: 480%;
+            }
+
+            95% {
+                background-size: 490%;
+            }
+
+            100% {
+                background-size: 500%;
+            }
+
+        }
+    }
+
+    #card-4 {
+        background-image: url(../../../assets/images/homepage/technologie/disque_frein_desktop.jpg);
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+
+        &:hover {
+            animation: zoom 1.5s;
+        }
+
+
+        @keyframes zoom {
+            0% {
+                background-size: 300%;
+            }
+
+            5% {
+                background-size: 310%;
+            }
+
+            10% {
+                background-size: 320%;
+            }
+
+            15% {
+                background-size: 330%;
+            }
+
+            20% {
+                background-size: 340%;
+            }
+
+            25% {
+                background-size: 350%;
+            }
+
+            30% {
+                background-size: 360%;
+            }
+
+            35% {
+                background-size: 370%;
+            }
+
+            40% {
+                background-size: 380%;
+            }
+
+            45% {
+                background-size: 390%;
+            }
+
+            50% {
+                background-size: 400%;
+            }
+
+            55% {
+                background-size: 410%;
+            }
+
+            60% {
+                background-size: 420%;
+            }
+
+            65% {
+                background-size: 430%;
+            }
+
+            70% {
+                background-size: 440%;
+            }
+
+            75% {
+                background-size: 450%;
+            }
+
+            80% {
+                background-size: 460%;
+            }
+
+            85% {
+                background-size: 470%;
+            }
+
+            90% {
+                background-size: 480%;
+            }
+
+            95% {
+                background-size: 490%;
+            }
+
+            100% {
+                background-size: 500%;
+            }
+
+        }
+    }
+
+    a {
+        font-family: $lato;
+    }
 }
 
+@media (max-width: 399px) {
+
+    #card-1,
+    #card-2,
+    #card-3,
+    #card-4 {
+        width: 20rem;
+        height: 40rem;
+    }
+}

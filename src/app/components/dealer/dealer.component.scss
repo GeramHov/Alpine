@@ -34,23 +34,20 @@ $playfair: "Playfair Display", serif;
 }
 
 @media (max-width: 1280px) {
-    #dealer{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    #main{
+        height: auto;
+        overflow-y: hidden;
         #map{
-            overflow-x: hidden;
+            width: 100%;
         }
-    }
-}
-
-@media (max-width: 870px) {
-    #dealer{
-        flex-direction: column;
-        justify-content: start;
-        align-items: center;
-        #map{
-            overflow-x: hidden;
+    
+        #info{
+            width: 90vw;
+            height: auto;
+    
+            .text-jost{
+                font-size: 20px;
+            }
         }
     }
 }

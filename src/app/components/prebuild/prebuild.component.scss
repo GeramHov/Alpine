@@ -7,16 +7,19 @@ $playfair: "Playfair Display", serif;
 #slider {
     width: 100vw;
 }
-#select{
+
+#select {
     overflow: hidden;
 }
 
 .text-playfair {
     font-family: $playfair;
 }
+
 .text-jost {
     font-family: $jost;
 }
+
 .blue {
     background-color: $blueAlpine;
 
@@ -25,9 +28,11 @@ $playfair: "Playfair Display", serif;
         transition: 0.2s ease-in;
     }
 }
+
 .leaving {
     animation: leave 0.3s;
 }
+
 .coming {
     animation: come 0.3s;
 }
@@ -55,6 +60,7 @@ $playfair: "Playfair Display", serif;
         opacity: 0.5;
     }
 }
+
 @keyframes come {
     0% {
         opacity: 0.5;
@@ -102,7 +108,17 @@ $playfair: "Playfair Display", serif;
         width: 50vw;
     }
 
-    #card{
+    #card {
         transform: translateX(0);
+        width: 20rem;
+        height: 12rem;
+
+        #card-header {
+            font-size: 20px;
+        }
+
+        #card-text {
+            font-size: 14px;
+        }
     }
 }
